@@ -1,0 +1,32 @@
+{
+  "name": "action-deploy-theme",
+  "version": "0.0.0",
+  "repository": "git@github.com:TryGhost/action-deploy-theme.git",
+  "author": "Ghost Foundation",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo \"Implement me!\"",
+    "test": "NODE_ENV=testing mocha './test/**/*.test.js'",
+    "lint": "eslint . --ext .js --cache",
+    "posttest": "yarn lint",
+    "preship": "yarn test",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn publish && git push --follow-tags; fi"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "eslint-plugin-ghost": "0.5.0",
+    "mocha": "6.2.1",
+    "should": "13.2.3",
+    "sinon": "7.5.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.0",
+    "ghost-ignition": "^3.1.0",
+    "lodash": "^4.17.15"
+  }
+}
