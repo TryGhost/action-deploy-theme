@@ -6,13 +6,17 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .js --cache"
+    "build": "ncc build",
+    "lint": "eslint . --ext .js --cache",
+    "preship": "yarn build",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
   },
   "files": [
     "index.js",
     "lib"
   ],
   "devDependencies": {
+    "@zeit/ncc": "0.20.5",
     "eslint": "6.5.1",
     "eslint-plugin-ghost": "0.5.0"
   },
