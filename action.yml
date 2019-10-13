@@ -1,5 +1,7 @@
-name: 'Deploy Theme'
-description: 'Zip & deploy a theme to your Ghost site'
+name: 'Deploy Ghost Theme'
+description: 'Build & deploy a theme to your Ghost site'
+icon: 'cloud-lightning'
+color: 'gray-dark'
 inputs:
   api-url:
     description: 'Ghost Admin API Url'
