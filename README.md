@@ -1,18 +1,14 @@
 # Ghost Theme Deploy for GitHub Actions :rocket: 
 
-[![Build Status][build-badge]][build-url] [![Issues](https://img.shields.io/github/issues/JamesIves/github-pages-deploy-action.svg)](https://github.com/tryghost/action-deploy-theme/issues)
+[![Actions Status](https://github.com/tryghost/action-deploy-theme/workflows/integration/badge.svg)](https://github.com/tryghost/action-deploy-theme/actions) [![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/deploy-to-github-pages) [![Issues](https://img.shields.io/github/issues/tryghost/action-deploy-theme.svg)](https://github.com/tryghost/action-deploy-theme/issues)
 
 This [GitHub action](https://github.com/features/actions) handles the build and deploy process of your [Ghost Theme](https://ghost.org/docs/api/handlebars-themes/) to any [Ghost](https://ghost.org) instance, via API. This action is built on Node, so you can call any optional build scripts your theme requires prior to deploying.
 
 <br>
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/120485/66710712-20ace080-eda8-11e9-8559-7f0c3fd96651.png" width="800" />
+    <img src="https://user-images.githubusercontent.com/120485/66710712-20ace080-eda8-11e9-8559-7f0c3fd96651.png" />
 </p>
-
-<br>
-
-&nbsp;
 
 ---
 
