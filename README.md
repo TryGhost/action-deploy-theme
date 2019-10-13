@@ -53,6 +53,9 @@ The `with` portion of the workflow **must** be configured before the action will
 | ------------- | ------------- | ------------- | ------------- |
 | `GHOST_ADMIN_API_URL`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
 | `GHOST_ADMIN_API_KEY`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
+
+&nbsp;
+
 ---
 
 <p align="center">Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action !</p>
