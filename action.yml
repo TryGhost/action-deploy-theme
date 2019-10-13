@@ -1,6 +1,6 @@
 name: 'Deploy Ghost Theme'
 description: 'Build & deploy a theme to your Ghost site'
-icon: 'cloud-lightning'
+icon: cloud-lightning
 color: 'gray-dark'
 inputs:
   api-url:
