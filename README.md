@@ -51,8 +51,13 @@ The `with` portion of the workflow **must** be configured before the action will
 
 | Key  | Value Information | Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
-| `GHOST_ADMIN_API_URL`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
-| `GHOST_ADMIN_API_KEY`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
+| `api-url`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
+| `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
+| `exclude` | A list of files & folders to exclude from the generated zip file in addition to the defaults, e.g. `"gulpfile.js *dist/*"` | `string` | No |
+
+&nbsp;
+
+:bulb: Use `exclude` to reduce the size of the zip file & keep deployment times minimal.
 
 &nbsp;
 
