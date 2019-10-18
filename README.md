@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - uses: TryGhost/action-deploy-theme@v1.0.0
+      - uses: TryGhost/action-deploy-theme@v1.1.0
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
