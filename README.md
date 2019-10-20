@@ -1,8 +1,28 @@
-# Ghost Theme Deploy for GitHub Actions :rocket: 
+<p align="center">
+  <a href="https://ghost.org">
+    <img src="https://user-images.githubusercontent.com/120485/43974508-b64b2fe8-9cd2-11e8-8e58-707254b8817c.png" width="140px" alt="Ghost" />
+  </a>
+</p>
+<h3 align="center">Deploy your Ghost Theme from Github</h3>
+<p align="center">
+    <a href="https://github.com/marketplace/actions/deploy-ghost-theme">
+        <img src="https://img.shields.io/badge/view-action-blue.svg" alt="View Action" />
+    </a>
+    <a href="https://github.com/TryGhost/action-deploy-theme/contributors/">
+        <img src="https://img.shields.io/github/contributors/TryGhost/action-deploy-theme.svg" alt="Contributors" />
+    </a>
+    <a href="https://github.com/tryghost/action-deploy-theme/issues">
+        <img src="https://img.shields.io/github/issues/tryghost/action-deploy-theme.svg" alt="Issues" />
+    </a>
+    <a href="https://opencollective.com/ghost">
+        <img src="https://opencollective.com/ghost/backers/badge.svg" alt="OpenCollective" />
+    </a>
+</p>
 
-[![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/deploy-ghost-theme) [![Issues](https://img.shields.io/github/issues/tryghost/action-deploy-theme.svg)](https://github.com/tryghost/action-deploy-theme/issues)
+<p align="center">
+    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> from Github<br>to any [Ghost](https://ghost.org) install, via the Ghost Admin API!
+</p>
 
-This [GitHub action](https://github.com/features/actions) allows you to build and deploy your [Ghost Theme](https://ghost.org/docs/api/handlebars-themes/) from Github to any [Ghost](https://ghost.org) install, via the Admin API!
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/120485/67154934-747e7300-f32e-11e9-9448-586a171c5169.png" />
