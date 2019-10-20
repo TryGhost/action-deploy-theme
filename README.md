@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> from <br>Github to any [Ghost](https://ghost.org) install, via the Ghost Admin API!
+    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> from <br>Github to any <a href="https://ghost.org">Ghost</a> install, via the Ghost Admin API!
 </p>
 
 
