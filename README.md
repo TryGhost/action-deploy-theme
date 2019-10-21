@@ -39,33 +39,33 @@
 
 ## Getting Started
 
-You can include the action in your workflow to trigger on any event that GitHub actions supports. If the remote branch that you wish to deploy to doesn't already exist the action will create it for you.
+Using this action requires that you already have a working Ghost install running at least v2.25.5.
 
-Here's an example:
+1. You'll need a set of Ghost Admin API credentials, which can be found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations. 
+
+2. On GitHub, navigate to your theme repository&raquo;Settings&raquo;Secrets and add 2 new secrets called `GHOST_ADMIN_API_URL` and `GHOST_ADMIN_API_KEY` containing the API URL and Admin API Key from Ghost Admin&raquo;Integrations.
+
+3. Once your secrets are in place, copy this example config into `.github/workflows/deploy-theme.yml`.
 
 ```yml
 name: Deploy Theme
-on: [push]
+on:
+  push:	
+    branches:	
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - uses: TryGhost/action-deploy-theme@v1.1.0
+      - name: Deploy Ghost Theme
+        uses: TryGhost/action-deploy-theme@v1.2.0
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-
 ```
 
-If you'd like to make it so the workflow only triggers on push events to specific branches then you can modify the `on` section. You'll still need to specify a `BASE_BRANCH` if you're deploying from a branch other than `master`.
-
-```yml
-on:
-  push:
-    branches:
-      - master
-```
+This will trigger a deployment for every commit to master. If you'd like to change the "on" event, see the [GitHub action documentation](https://help.github.com/en/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#on), which shows how to build on Pull Requests, Releases, Tags and more.
 
 ## Configuration
 
