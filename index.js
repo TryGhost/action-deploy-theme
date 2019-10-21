@@ -14,7 +14,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
         const basePath = process.env.GITHUB_WORKSPACE;
         const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
-        const themeName = require(pkgPath).name;
+        const themeName = core.getInput('theme-name') || require(pkgPath).name;
         const themeZip = `${themeName}.zip`;
         const zipPath = path.join(basePath, themeZip);
         const exclude = core.getInput('exclude') || '';
