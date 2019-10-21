@@ -37,7 +37,7 @@
 &nbsp;
 
 
-## Getting Started 
+## Getting Started
 
 You can include the action in your workflow to trigger on any event that GitHub actions supports. If the remote branch that you wish to deploy to doesn't already exist the action will create it for you.
 
@@ -62,8 +62,8 @@ If you'd like to make it so the workflow only triggers on push events to specifi
 
 ```yml
 on:
-  push:	
-    branches:	
+  push:
+    branches:
       - master
 ```
 
@@ -76,6 +76,7 @@ The `with` portion of the workflow **must** be configured before the action will
 | `api-url`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
 | `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
 | `exclude` | A list of files & folders to exclude from the generated zip file in addition to the defaults, e.g. `"gulpfile.js *dist/*"` | `string` | No |
+| `theme-name` | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"` | `string` | No |
 
 &nbsp;
 
