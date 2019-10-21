@@ -43,7 +43,7 @@
 
 1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin&raquo;Integrations. 
 
-2. On GitHub, navigate to your theme repository&raquo;Settings&raquo;Secrets. Create two new secrets called `GHOST_ADMIN_API_URL` containing the API URL and `GHOST_ADMIN_API_KEY` containing Admin API Key both copied exactly from Ghost Admin&raquo;Integrations.
+2. On GitHub, navigate to your theme repository&raquo;Settings&raquo;Secrets. Create a secret called `GHOST_ADMIN_API_URL` containing the API URL and another called `GHOST_ADMIN_API_KEY` containing the Admin API Key. Both must be copied exactly from Ghost Admin&raquo;Integrations.
 
 3. Once your secrets are in place, copy this example config into `.github/workflows/deploy-theme.yml`. Then commit and push your changes:
 
