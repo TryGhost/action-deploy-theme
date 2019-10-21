@@ -39,7 +39,7 @@
 
 ## Getting Started
 
-💡Using this action requires that you already have a working Ghost install running at least v2.25.5.
+💡This action expects that you already have a working Ghost install running at least v2.25.5.
 
 1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin&raquo;Integrations. 
 
