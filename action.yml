@@ -13,6 +13,9 @@ inputs:
   exclude:
     description: 'Files or folders to exclude (space-separated list)'
     required: false
+  file:
+    description: 'Path to a built zip file. If this is included, the `exclude`, `string`, and `theme-name` options are ignored'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'

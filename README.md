@@ -77,6 +77,7 @@ The `with` portion of the workflow **must** be configured before the action will
 | `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
 | `exclude` | A list of files & folders to exclude from the generated zip file in addition to the defaults, e.g. `"gulpfile.js *dist/*"` | `string` | No |
 | `theme-name` | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"` | `string` | No |
+| `file` | Path to a built zip file. If this is included, the `exclude`, `string`, and `theme-name` options are ignored | `string` | No | 
 
 &nbsp;
 
