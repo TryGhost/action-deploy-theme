@@ -87,3 +87,7 @@ The `with` portion of the workflow **must** be configured before the action will
 ---
 
 <p align="center">Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action !</p>
+
+# Copyright & License
+
+Copyright (c) 2019-2020 Ghost Foundation - Released under the [MIT license](LICENSE).
