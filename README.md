@@ -3,7 +3,7 @@
     <img src="https://user-images.githubusercontent.com/120485/43974508-b64b2fe8-9cd2-11e8-8e58-707254b8817c.png" width="140px" alt="Ghost" />
   </a>
 </p>
-<h3 align="center">Deploy your Ghost Theme from Github</h3>
+<h3 align="center">Deploy your Ghost Theme from GitHub</h3>
 <p align="center">
     <a href="https://github.com/marketplace/actions/deploy-ghost-theme">
         <img src="https://img.shields.io/badge/view-action-blue.svg" alt="View Action" />
@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> <br>from Github to any <a href="https://ghost.org">Ghost</a> install, via the Ghost Admin API!
+    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> <br>from GitHub to any <a href="https://ghost.org">Ghost</a> install, via the Ghost Admin API!
 </p>
 
 
