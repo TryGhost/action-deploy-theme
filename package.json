@@ -16,7 +16,7 @@
     "lib"
   ],
   "devDependencies": {
-    "@zeit/ncc": "0.21.1",
+    "@zeit/ncc": "0.22.0",
     "eslint": "6.8.0",
     "eslint-plugin-ghost": "1.0.1"
   },
