@@ -1,14 +1,7 @@
 {
   "extends": [
     "@tryghost:base",
-    "@tryghost:automergeSilentTestLintNonMajor"
-  ],
-  "travis": { "enabled": true },
-  "node": {
-    "supportPolicy": ["lts"]
-  },
-  "separateMinorPatch": true,
-  "patch": {
-    "automerge": true
-  }
+    "@tryghost:automergeSilentTestLintNonMajor",
+    "@tryghost:automergePatchBranch"
+  ]
 }
