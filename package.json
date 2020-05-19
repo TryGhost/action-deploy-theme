@@ -1,6 +1,6 @@
 {
   "name": "action-deploy-theme",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "repository": "git@github.com:TryGhost/action-deploy-theme.git",
   "author": "Ghost Foundation",
   "license": "MIT",
