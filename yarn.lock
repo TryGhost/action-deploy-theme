@@ -327,21 +327,21 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-plugin-ember@7.10.1:
-  version "7.10.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-7.10.1.tgz#9ec731f158fc76a293bfb8055eaceb6b978ae0e7"
-  integrity sha512-3iOrcUsqZXsri6krYw+8fEH20Es8A2QEkog8fCw/Ldr54SR2/IEO41F7ldOrr0X3h8w9z1W1/v97IlMiGJhXkg==
+eslint-plugin-ember@8.5.1:
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-8.5.1.tgz#acaeb430e150115350fb184450cd17eaf6bb5d7e"
+  integrity sha512-92tU1ktJBfwcWIdAzVVuo6gLIGWrf2AtnNyHnw7vBmSVcP00P5hM7fDXL0CaLWblAVIrfik4NrOWCe9sSkh6ww==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.12"
     snake-case "^3.0.3"
 
-eslint-plugin-ghost@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ghost/-/eslint-plugin-ghost-1.2.0.tgz#fdb69f16ffba72e1f5f3a0a7b1c6719cbaea0491"
-  integrity sha512-Oeqo5SwflgGv9JkbsBwqCJTuvbnl2wSNW4FdfDMJ7b4JR+xpNo0tm+2wIDhQarzc5wXMTZd5IfaBCEySYF1+Ng==
+eslint-plugin-ghost@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ghost/-/eslint-plugin-ghost-1.4.1.tgz#727d837d1e9cbb3025a23baf2fccda4f297bea07"
+  integrity sha512-ChHAQSKPA/qwyhkx5NTk9iA2L60aJEBnpQCqLlqJDaBUK28s6L+lsWz0Lv7Y4I0ZXYa7Wpy9OPPX4GlFFPxDyg==
   dependencies:
-    eslint-plugin-ember "7.10.1"
+    eslint-plugin-ember "8.5.1"
     eslint-plugin-mocha "6.3.0"
     eslint-plugin-sort-imports-es6-autofix "0.5.0"
 
