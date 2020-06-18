@@ -1,18 +1,15 @@
-name: Test
+name: Deploy Theme
 on:
-  pull_request:
-  push:
-    branches:
+  push:	
+    branches:	
       - master
-      - 'renovate/*'
 jobs:
-  lint:
+  deploy:
     runs-on: ubuntu-18.04
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+      - name: Deploy Ghost Theme
+        uses: TryGhost/action-deploy-theme@v1.3.1
         with:
-          node-version: 12
-      - run: yarn
-      - run: yarn lint
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
