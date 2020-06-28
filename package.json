@@ -8,7 +8,7 @@
   "scripts": {
     "build": "ncc build",
     "lint": "eslint . --ignore-pattern dist --ext .js --cache",
-    "preship": "yarn build",
+    "preship": "yarn build && yarn lint",
     "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
   },
   "files": [
