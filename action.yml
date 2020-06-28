@@ -17,7 +17,7 @@ inputs:
     description: 'A custom theme name that overrides the default name in package.json'
     required: false
   file:
-    description: 'Path to a built zip file. If this is included, the `exclude`, `string`, and `theme-name` options are ignored'
+    description: 'Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored'
     required: false
 runs:
   using: 'node12'

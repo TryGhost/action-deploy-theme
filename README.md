@@ -41,7 +41,7 @@
 
 💡This action expects that you already have a working Ghost install running at least v2.25.5.
 
-1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin&raquo;Integrations. 
+1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin&raquo;Integrations.
 
 2. On GitHub, navigate to your theme repository&raquo;Settings&raquo;Secrets. Create a secret called `GHOST_ADMIN_API_URL` containing the API URL and another called `GHOST_ADMIN_API_KEY` containing the Admin API Key. Both must be copied exactly from Ghost Admin&raquo;Integrations.
 
@@ -50,8 +50,8 @@
 ```yml
 name: Deploy Theme
 on:
-  push:	
-    branches:	
+  push:
+    branches:
       - master
 jobs:
   deploy:
@@ -77,7 +77,7 @@ The `with` portion of the workflow **must** be configured before the action will
 | `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
 | `exclude` | A list of files & folders to exclude from the generated zip file in addition to the defaults, e.g. `"gulpfile.js *dist/*"` | `string` | No |
 | `theme-name` | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"` | `string` | No |
-| `file` | Path to a built zip file. If this is included, the `exclude`, `string`, and `theme-name` options are ignored | `string` | No | 
+| `file` | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored | `string` | No |
 
 &nbsp;
 
