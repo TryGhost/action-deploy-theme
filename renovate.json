@@ -1,7 +1,5 @@
 {
   "extends": [
-    "@tryghost:base",
-    "@tryghost:automergeTestLint",
-    "@tryghost:automergePatchBranch"
+    "@tryghost:quietJS"
   ]
 }
