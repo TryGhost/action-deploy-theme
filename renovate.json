@@ -1,7 +1,7 @@
 {
   "extends": [
     "@tryghost:base",
-    "@tryghost:automergeSilentTestLintNonMajor",
+    "@tryghost:automergeTestLint",
     "@tryghost:automergePatchBranch"
   ]
 }
