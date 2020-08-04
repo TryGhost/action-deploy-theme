@@ -45,10 +45,10 @@
   resolved "https://registry.yarnpkg.com/@ember-data/rfc395-data/-/rfc395-data-0.0.4.tgz#ecb86efdf5d7733a76ff14ea651a1b0ed1f8a843"
   integrity sha512-tGRdvgC9/QMQSuSuJV45xoyhI0Pzjm7A9o/MVVA3HakXIImJbbzx/k/6dO9CUEQXIyS2y0fW6C1XaYOG7rY0FQ==
 
-"@tryghost/admin-api@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.2.0.tgz#cb26d6977bbe63e01ac4168eff5019c2c749dbfb"
-  integrity sha512-xHGvZO1rMCMyijgWP5udTmgG31U2YcJAv3YYh99MWMVPRzJG5XA4m2uJZceEeNYgiW5AzGyTB3GunaKG94o8MQ==
+"@tryghost/admin-api@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.3.0.tgz#4bf38e436cf7b574dcd175253c05514d1632b525"
+  integrity sha512-8k7IsKAHetGbCq4PP5dLJuAaJ5ubyhqd63euvLDwF1Vk/hq+FINb/KXLceAE9m/5W3E1jr3feSnoLkn0MUVLjg==
   dependencies:
     axios "0.19.2"
     form-data "^3.0.0"
