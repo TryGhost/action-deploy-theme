@@ -21,7 +21,7 @@
     "eslint-plugin-ghost": "1.5.0"
   },
   "dependencies": {
-    "@actions/core": "1.2.4",
+    "@actions/core": "1.2.5",
     "@actions/exec": "1.0.4",
     "@tryghost/admin-api": "1.3.1"
   }
