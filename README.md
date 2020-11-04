@@ -53,6 +53,7 @@ on:
   push:
     branches:
       - master
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-18.04
