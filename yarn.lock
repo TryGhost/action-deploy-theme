@@ -67,10 +67,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@tryghost/admin-api@1.3.8":
-  version "1.3.8"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.3.8.tgz#34fd373e5bbe91d003e7d2bd540e515069d80e85"
-  integrity sha512-xRyyc3b29xcfyGhUx3nfvsJhXBz7+2NMWbAzSijKphQooCfG7L45XsfF9oRXwEToXUfHbnpBqvzKtsCIp6i8NA==
+"@tryghost/admin-api@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.4.0.tgz#e21adf0cfb7ccc9cc846ef26eaf438dfc84b775f"
+  integrity sha512-wI5RUYnlN3CAoVLNvjb95OuKZ9EDVJOXxTPZIFPj818VQlJKe284p7qNPfWaCL9DYTQ01WTkq1mwa35SL9Af/Q==
   dependencies:
     axios "0.21.1"
     form-data "^3.0.0"
