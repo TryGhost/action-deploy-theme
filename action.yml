@@ -17,7 +17,7 @@ inputs:
     description: 'A custom theme name that overrides the default name in package.json'
     required: false
   theme-dir:
-    description: 'A custom directory to zip when theme is in a subdirectory'
+    description: 'A custom directory to zip when a theme is in a subdirectory'
     required: false
   file:
     description: 'Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored'
