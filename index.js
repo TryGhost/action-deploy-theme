@@ -25,7 +25,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`zip -r ${themeZip} ${core.getInput('theme-dir') || '.'} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
