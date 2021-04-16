@@ -67,12 +67,12 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@tryghost/admin-api@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.4.0.tgz#e21adf0cfb7ccc9cc846ef26eaf438dfc84b775f"
-  integrity sha512-wI5RUYnlN3CAoVLNvjb95OuKZ9EDVJOXxTPZIFPj818VQlJKe284p7qNPfWaCL9DYTQ01WTkq1mwa35SL9Af/Q==
+"@tryghost/admin-api@1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.4.1.tgz#90b3ee3396245728fe35d0aebda3edd003983f44"
+  integrity sha512-Lfrxn4h8cYwPF6gdmXZyHiGuGwDALZ/hEG5uevKxUgAnaXJQ7mm5qFSSqub3zXY2HgPTUrTQi2wZakk0SlNj2Q==
   dependencies:
-    axios "0.21.1"
+    axios "^0.21.1"
     form-data "^3.0.0"
     jsonwebtoken "^8.4.0"
 
@@ -192,7 +192,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-axios@0.21.1:
+axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
