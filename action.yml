@@ -16,11 +16,11 @@ inputs:
   theme-name:
     description: 'A custom theme name that overrides the default name in package.json'
     required: false
-  theme-dir:
-    description: 'A custom directory to zip when a theme is in a subdirectory'
-    required: false
   file:
     description: 'Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored'
+    required: false
+  working-directory:
+    description: 'A custom directory to zip when a theme is in a subdirectory'
     required: false
 runs:
   using: 'node12'
