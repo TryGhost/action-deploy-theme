@@ -18,7 +18,7 @@
   "devDependencies": {
     "@zeit/ncc": "0.22.3",
     "eslint": "7.32.0",
-    "eslint-plugin-ghost": "2.9.0"
+    "eslint-plugin-ghost": "2.10.0"
   },
   "dependencies": {
     "@actions/core": "1.6.0",
