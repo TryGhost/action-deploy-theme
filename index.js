@@ -12,8 +12,8 @@ const GhostAdminApi = require('@tryghost/admin-api');
             version: 'canary'
         });
 
-        const basePath = process.env.GITHUB_WORKSPACE;
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
+        const basePath = path.join(process.env.GITHUB_WORKSPACE, core.getInput('root-dir'));
+        const pkgPath = path.join(basePath, 'package.json');
 
         let zipPath = core.getInput('file');
 
