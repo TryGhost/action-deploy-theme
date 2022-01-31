@@ -23,6 +23,6 @@
   "dependencies": {
     "@actions/core": "1.6.0",
     "@actions/exec": "1.1.0",
-    "@tryghost/admin-api": "1.4.5"
+    "@tryghost/admin-api": "1.5.0"
   }
 }
