@@ -88,10 +88,10 @@
   resolved "https://registry.yarnpkg.com/@kapouer/eslint-plugin-no-return-in-loop/-/eslint-plugin-no-return-in-loop-1.0.0.tgz#9fdbe83deca12156c0b5fcbfae1f387e9f2baff5"
   integrity sha512-IXQp8N68L2fkk7p7RckBBhT/KwAX04GooIGjwzmY5THQanQvsmJpYgwC7A1Io2XDXBJzlGelQkP/C1SRM/aq8w==
 
-"@tryghost/admin-api@1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.11.1.tgz#dae266a9b2a7edd975a1ff588370e4d5dd429dff"
-  integrity sha512-46xy3QPL1oumTj8XPa8Pu8owVYYWgZb4HINY73HB1KGzZFO3nsQzf7BEWyIhPwJRT3jGp0wnwDzvO+InxncUWA==
+"@tryghost/admin-api@1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.11.2.tgz#f54f7189470593643a16751b7c88baa4cf560990"
+  integrity sha512-Hd7Mym/RmWvbsrYzEWh5HEjsHQbMWoJin+pG+dbTClusvyKIH9AosEieJ7QXUfPv3wkU6FlAF/bT1ch4G2T7Ig==
   dependencies:
     axios "^0.21.1"
     form-data "^4.0.0"
