@@ -20,12 +20,12 @@ const GhostAdminApi = require('@tryghost/admin-api');
         // Zip file was not provided - zip everything up!
         if (!zipPath) {
             const themeName = core.getInput('theme-name') || require(pkgPath).name;
-            const themeZip = `${themeName}.zip`;
+            const themeZip = `dist/${themeName}.zip`;
             const exclude = core.getInput('exclude') || '';
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} ${core.getInput('working-directory') || '.'} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`yarn zip`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
