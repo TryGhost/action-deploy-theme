@@ -21,7 +21,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
         if (!zipPath) {
             const themeName = core.getInput('theme-name') || require(pkgPath).name;
             const themeZip = `dist/${themeName}.zip`;
-            const exclude = core.getInput('exclude') || '';
+            // const exclude = core.getInput('exclude') || '';
             zipPath = themeZip;
 
             // Create a zip
