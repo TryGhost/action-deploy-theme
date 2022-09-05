@@ -1,0 +1,11 @@
+name: Update Major Version Tag
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  update-major:
+    name: Update Major Version Tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nowactions/update-majorver@8015d1f776da5d9af4d1318a4253758189171bfd
