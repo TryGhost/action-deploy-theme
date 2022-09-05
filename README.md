@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ghost.org">
-    <img src="https://user-images.githubusercontent.com/120485/43974508-b64b2fe8-9cd2-11e8-8e58-707254b8817c.png" width="140px" alt="Ghost" />
+    <img src="https://user-images.githubusercontent.com/65487235/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png" width="200px" alt="Ghost" />
   </a>
 </p>
 <h3 align="center">Deploy your Ghost Theme from GitHub</h3>
