@@ -56,7 +56,7 @@ on:
       - main
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - name: Deploy Ghost Theme
