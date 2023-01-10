@@ -8,8 +8,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
         const url = core.getInput('api-url');
         const api = new GhostAdminApi({
             url,
-            key: core.getInput('api-key'),
-            version: 'canary'
+            key: core.getInput('api-key')
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
