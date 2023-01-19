@@ -9,7 +9,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
         const api = new GhostAdminApi({
             url,
             key: core.getInput('api-key'),
-            version: "v5.0"
+            version: 'v5.0'
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
