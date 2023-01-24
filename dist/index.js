@@ -2305,7 +2305,7 @@ const GhostAdminApi = __webpack_require__(639);
         const api = new GhostAdminApi({
             url,
             key: core.getInput('api-key'),
-            version: 'canary'
+            version: 'v5.0'
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
@@ -9538,7 +9538,7 @@ Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: functi
 /***/ 485:
 /***/ (function(module) {
 
-module.exports = {"name":"@tryghost/admin-api","version":"1.13.1","repository":"https://github.com/TryGhost/SDK/tree/master/packages/admin-api","author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \"Implement me!\"","test":"NODE_ENV=testing c8 --all --reporter text --reporter cobertura mocha './test/**/*.test.js'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"7.12.0","mocha":"10.0.0","should":"13.2.3","sinon":"14.0.0"},"dependencies":{"axios":"^0.27.0","form-data":"^4.0.0","jsonwebtoken":"^8.4.0"},"gitHead":"9251588cb81347205c5dab850636bba4c86fe58d"};
+module.exports = {"name":"@tryghost/admin-api","version":"1.13.2","repository":"https://github.com/TryGhost/SDK/tree/master/packages/admin-api","author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \"Implement me!\"","test":"NODE_ENV=testing c8 --all --reporter text --reporter cobertura mocha './test/**/*.test.js'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"7.12.0","mocha":"10.1.0","should":"13.2.3","sinon":"15.0.0"},"dependencies":{"axios":"^0.27.0","form-data":"^4.0.0","jsonwebtoken":"^8.4.0"},"gitHead":"bc7ef4154981d09195c25acd6eda0531b1cffa32"};
 
 /***/ }),
 
