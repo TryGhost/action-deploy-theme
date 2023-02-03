@@ -58,7 +58,7 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1
         with:
