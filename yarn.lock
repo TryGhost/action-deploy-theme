@@ -115,10 +115,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@tryghost/admin-api@1.13.2":
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.13.2.tgz#acb6d9bc02f43ee6ad376055f954286fe23d0f84"
-  integrity sha512-H7zTOeoP7hSBca5QvhB0OcjjvsJHRc0uPB/kKMt09mzgf1BAAIo6L0S9QKVbMp5D7ko1a7MtnFlBOKIGO43c6g==
+"@tryghost/admin-api@1.13.3":
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.13.3.tgz#7199c907ff53dfb969d3f54f2f15ce2554945889"
+  integrity sha512-saqBRW+iilYL4KC8XAIlWixyXrMqBdFz9Zt+gfgMZTF+4SgA/c/X1QkJFPe6difrv98FSWc8kwjgPHISsR3sbA==
   dependencies:
     axios "^0.27.0"
     form-data "^4.0.0"
