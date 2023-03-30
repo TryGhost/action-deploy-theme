@@ -1,4 +1,5 @@
 const path = require('path');
+const slug = require('slug');
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 const GhostAdminApi = require('@tryghost/admin-api');
@@ -19,7 +20,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
         // Zip file was not provided - zip everything up!
         if (!zipPath) {
-            const themeName = core.getInput('theme-name') || require(pkgPath).name;
+            const themeName = core.getInput('theme-name') || slug(require(pkgPath).name);
             const themeZip = `${themeName}.zip`;
             const exclude = core.getInput('exclude') || '';
             zipPath = themeZip;
