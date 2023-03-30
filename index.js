@@ -13,7 +13,8 @@ const GhostAdminApi = require('@tryghost/admin-api');
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
+        const themePath = path.join(basePath, core.getInput('working-directory') || '.');
+        const pkgPath = path.join(themePath, 'package.json');
 
         let zipPath = core.getInput('file');
 
@@ -25,7 +26,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} ${core.getInput('working-directory') || '.'} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`zip -r ${themeZip} ${themePath} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);

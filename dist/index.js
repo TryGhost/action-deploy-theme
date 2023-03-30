@@ -2309,7 +2309,8 @@ const GhostAdminApi = __webpack_require__(639);
         });
 
         const basePath = process.env.GITHUB_WORKSPACE;
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
+        const themePath = path.join(basePath, core.getInput('working-directory') || '.');
+        const pkgPath = path.join(themePath, 'package.json');
 
         let zipPath = core.getInput('file');
 
@@ -2321,7 +2322,7 @@ const GhostAdminApi = __webpack_require__(639);
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} ${core.getInput('working-directory') || '.'} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`zip -r ${themeZip} ${themePath} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
@@ -9538,7 +9539,7 @@ Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: functi
 /***/ 485:
 /***/ (function(module) {
 
-module.exports = {"name":"@tryghost/admin-api","version":"1.13.2","repository":"https://github.com/TryGhost/SDK/tree/master/packages/admin-api","author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \"Implement me!\"","test":"NODE_ENV=testing c8 --all --reporter text --reporter cobertura mocha './test/**/*.test.js'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"7.12.0","mocha":"10.1.0","should":"13.2.3","sinon":"15.0.0"},"dependencies":{"axios":"^0.27.0","form-data":"^4.0.0","jsonwebtoken":"^8.4.0"},"gitHead":"bc7ef4154981d09195c25acd6eda0531b1cffa32"};
+module.exports = {"name":"@tryghost/admin-api","version":"1.13.4","repository":"https://github.com/TryGhost/SDK/tree/master/packages/admin-api","author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \"Implement me!\"","test":"NODE_ENV=testing c8 --all --reporter text --reporter cobertura mocha './test/**/*.test.js'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"7.13.0","mocha":"10.2.0","should":"13.2.3","sinon":"15.0.2"},"dependencies":{"axios":"^0.27.0","form-data":"^4.0.0","jsonwebtoken":"^8.4.0"},"gitHead":"75e59f16ab0206aac74eed1daac91c2d54f3c695"};
 
 /***/ }),
 
