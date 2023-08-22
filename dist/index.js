@@ -15741,9 +15741,9 @@ const GhostAdminApi = __nccwpck_require__(6879);
             key: core.getInput('api-key'),
             version: 'v5.0'
         });
-
-        const basePath = process.env.GITHUB_WORKSPACE;
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
+        const workingDir = core.getInput('working-directory');
+        const basePath = path.join(process.env.GITHUB_WORKSPACE, workingDir);
+        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, workingDir, 'package.json');
 
         let zipPath = core.getInput('file');
 
@@ -15753,10 +15753,9 @@ const GhostAdminApi = __nccwpck_require__(6879);
             const themeZip = `${themeName}.zip`;
             const exclude = core.getInput('exclude') || '';
             zipPath = themeZip;
-            const workingDir = core.getInput('working-directory') || basePath;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: workingDir});
+            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
