@@ -23,5 +23,5 @@ inputs:
     description: 'A custom directory to zip when a theme is in a subdirectory'
     required: false
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
