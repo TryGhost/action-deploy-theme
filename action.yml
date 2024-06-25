@@ -22,6 +22,9 @@ inputs:
   working-directory:
     description: 'A custom directory to zip when a theme is in a subdirectory'
     required: false
+  client-api-version:
+    description: 'Admin Client API Version'
+    required: false
 runs:
   using: 'node20'
   main: 'dist/index.js'
