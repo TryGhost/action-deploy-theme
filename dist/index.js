@@ -43115,7 +43115,7 @@ const GhostAdminApi = __nccwpck_require__(6879);
         const api = new GhostAdminApi({
             url,
             key: core.getInput('api-key'),
-            version: 'v5.0'
+            version:  core.getInput('client-api-version') || 'v5.0'
         });
         const workingDir = core.getInput('working-directory');
         const basePath = path.join(process.env.GITHUB_WORKSPACE, workingDir);
