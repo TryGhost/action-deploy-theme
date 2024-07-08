@@ -65,7 +65,7 @@
   dependencies:
     eslint-visitor-keys "^3.3.0"
 
-"@eslint-community/regexpp@^4.5.1", "@eslint-community/regexpp@^4.6.0", "@eslint-community/regexpp@^4.6.1":
+"@eslint-community/regexpp@^4.11.0", "@eslint-community/regexpp@^4.5.1", "@eslint-community/regexpp@^4.6.1":
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/regexpp/-/regexpp-4.11.0.tgz#b0ffd0312b4a3fd2d6f77237e7248a5ad3a680ae"
   integrity sha512-G/M/tIiMrTAxEWRfLfQJMmGNX28IxBg4PBz8XqQhqUHLFI6TL2htpIB1iQCj144V5ee/JaKyT9/WZ0MGZWfA7A==
@@ -347,9 +347,9 @@ acorn-jsx@^5.3.2:
   integrity sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==
 
 acorn@^8.9.0:
-  version "8.12.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.12.0.tgz#1627bfa2e058148036133b8d9b51a700663c294c"
-  integrity sha512-RTvkC4w+KNXrM39/lWCUaG0IbRkWdCv7W/IOW9oU6SawyxulvkQy5HQPVTKxEjczcUvapcrw3cFx/60VN/NRNw==
+  version "8.12.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.12.1.tgz#71616bdccbe25e27a54439e0046e89ca76df2248"
+  integrity sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==
 
 ajv@^6.12.4:
   version "6.12.6"
@@ -1083,12 +1083,12 @@ eslint-plugin-ember@11.11.1:
     snake-case "^3.0.3"
 
 eslint-plugin-es-x@^7.1.0:
-  version "7.7.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-es-x/-/eslint-plugin-es-x-7.7.0.tgz#26a2e96ac9d5b510dec4635c7e30ec5b7b142a3f"
-  integrity sha512-aP3qj8BwiEDPttxQkZdI221DLKq9sI/qHolE2YSQL1/9+xk7dTV+tB1Fz8/IaCA+lnLA1bDEnvaS2LKs0k2Uig==
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-es-x/-/eslint-plugin-es-x-7.8.0.tgz#a207aa08da37a7923f2a9599e6d3eb73f3f92b74"
+  integrity sha512-7Ds8+wAAoV3T+LAKeu39Y5BzXCrGKrcISfgKEqTS4BDN8SFEDQd0S43jiQ8vIa3wUKD07qitZdfzlenSi8/0qQ==
   dependencies:
     "@eslint-community/eslint-utils" "^4.1.2"
-    "@eslint-community/regexpp" "^4.6.0"
+    "@eslint-community/regexpp" "^4.11.0"
     eslint-compat-utils "^0.5.1"
 
 eslint-plugin-filenames@allouis/eslint-plugin-filenames#15dc354f4e3d155fc2d6ae082dbfc26377539a18:
