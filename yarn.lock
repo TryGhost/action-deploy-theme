@@ -190,14 +190,14 @@
   resolved "https://registry.yarnpkg.com/@simple-dom/interface/-/interface-1.4.0.tgz#e8feea579232017f89b0138e2726facda6fbb71f"
   integrity sha512-l5qumKFWU0S+4ZzMaLXFU8tQZsicHEMEyAxI5kDFGhJsRqDwe0a7/iPA/GdxlGyDKseQQAgIz5kzU7eXTrlSpA==
 
-"@tryghost/admin-api@1.14.2":
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.14.2.tgz#7d08c55fa1c317b01e56480bdb1e6e5616146767"
-  integrity sha512-cFNjebUYvotKsGSRhjFWY/VVYNcuy/kuKc3MgTyE55osQKnAKXWh7BzCUhq4cfqTmPxBizBLIuUAKZipCBgj6Q==
+"@tryghost/admin-api@1.14.3":
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.14.3.tgz#771dabc72108204bd4d7c1c90343e4d14535634b"
+  integrity sha512-VGaecf3WiRiBzl7XfG5+/1Tve6GBnuY/DXktDWRdomeJbhWL/BkmhtLmgVhwZzuuH0D8H9NDr+zAhyIlSGdbTA==
   dependencies:
     axios "^1.0.0"
     form-data "^4.0.0"
-    jsonwebtoken "^9.0.0"
+    jsonwebtoken "^9.0.2"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.4"
@@ -1147,7 +1147,7 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
-jsonwebtoken@^9.0.0:
+jsonwebtoken@^9.0.2:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.3.tgz#6cd57ab01e9b0ac07cb847d53d3c9b6ee31f7ae2"
   integrity sha512-MT/xP0CrubFRNLNKvxJ2BYfy53Zkm++5bX9dtuPbqAeQpTVe0MQTFhao8+Cp//EmJp244xt6Drw/GVEGCUj40g==
