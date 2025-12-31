@@ -8,4 +8,4 @@ jobs:
     name: Update Major Version Tag
     runs-on: ubuntu-latest
     steps:
-      - uses: nowactions/update-majorver@350dbed53ee9d6cd1f75ab4a3f9b9eba7e32bb64
+      - uses: nowactions/update-majorver@d95f48d454a24a603b30280450329e5b67a1b68a
