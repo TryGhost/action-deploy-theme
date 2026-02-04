@@ -76,6 +76,7 @@ The `with` portion of the workflow **must** be configured before the action will
 | ------------- | ------------- | ------------- | ------------- |
 | `api-url`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations | `secrets` | **Yes** |
 | `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations | `secrets` | **Yes** |
+| `version` | The GhostJS version your blog is in. This will be [passed in the headers](https://docs.ghost.org/admin-api#accept-version-header) via `GhostAdminApi` package. Defaults to the latest version `v6.0` | `string` | No |
 | `exclude` | A list of files & folders to exclude from the generated zip file in addition to the [defaults](https://github.com/TryGhost/action-deploy-theme/tree/main/index.js#L28), e.g. `"gulpfile.js *dist/*"` | `string` | No |
 | `theme-name` | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"` | `string` | No |
 | `file` | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored | `string` | No |
