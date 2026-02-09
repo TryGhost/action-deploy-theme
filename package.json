@@ -24,6 +24,6 @@
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.4",
     "@vercel/ncc": "^0.38.0",
-    "slug": "^8.2.2"
+    "slug": "^11.0.0"
   }
 }
