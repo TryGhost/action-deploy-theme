@@ -11,7 +11,7 @@ inputs:
     description: 'Ghost Admin API Key'
     required: true
   version:
-    description: 'GhostJS Version'
+    description: 'Ghost Version'
     required: false
     default: 'v6.0'
   exclude:
