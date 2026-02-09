@@ -39,11 +39,11 @@
 
 ## Getting Started
 
-💡This action expects that you already have a working Ghost install running at least v2.25.5.
+💡 This action expects that you already have a working Ghost install running at least v2.25.5.
 
-1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin&raquo;Integrations.
+1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin &rarr; Integrations.
 
-2. On GitHub, navigate to your theme repository&raquo;Settings&raquo;Secrets. Create a secret called `GHOST_ADMIN_API_URL` containing the API URL and another called `GHOST_ADMIN_API_KEY` containing the Admin API Key. Both must be copied exactly from Ghost Admin&raquo;Integrations.
+2. On GitHub, navigate to your theme repository &rarr; Settings &rarr; Secrets and variables &rarr; Actions. Create a secret called `GHOST_ADMIN_API_URL` containing the API URL and another one called `GHOST_ADMIN_API_KEY` containing the Admin API Key. Both must be copied exactly from Ghost Admin &rarr; Integrations.
 
 3. Once your secrets are in place, copy this example config into `.github/workflows/deploy-theme.yml`. Then commit and push your changes:
 
@@ -56,9 +56,9 @@ on:
       - main
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1
         with:
@@ -74,8 +74,9 @@ The `with` portion of the workflow **must** be configured before the action will
 
 | Key  | Value Information | Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
-| `api-url`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
-| `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin&raquo;Integrations | `secrets` | **Yes** |
+| `api-url`  | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations | `secrets` | **Yes** |
+| `api-key`  | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations | `secrets` | **Yes** |
+| `version` | The GhostJS version your blog is in. This will be [passed in the headers](https://docs.ghost.org/admin-api#accept-version-header) via `GhostAdminApi` package. Defaults to the latest version `v6.0` | `string` | No |
 | `exclude` | A list of files & folders to exclude from the generated zip file in addition to the [defaults](https://github.com/TryGhost/action-deploy-theme/tree/main/index.js#L28), e.g. `"gulpfile.js *dist/*"` | `string` | No |
 | `theme-name` | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"` | `string` | No |
 | `file` | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored | `string` | No |
@@ -89,8 +90,8 @@ The `with` portion of the workflow **must** be configured before the action will
 
 ---
 
-<p align="center">Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action !</p>
+<p align="center">Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action!</p>
 
 # Copyright & License
 
-Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
+Copyright (c) 2013-2026 Ghost Foundation - Released under the [MIT license](LICENSE).

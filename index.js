@@ -10,11 +10,11 @@ const GhostAdminApi = require('@tryghost/admin-api');
         const api = new GhostAdminApi({
             url,
             key: core.getInput('api-key'),
-            version: 'v5.0'
+            version: core.getInput('version') || 'v6.0'
         });
-
-        const basePath = process.env.GITHUB_WORKSPACE;
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, 'package.json');
+        const workingDir = core.getInput('working-directory');
+        const basePath = path.join(process.env.GITHUB_WORKSPACE, workingDir);
+        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, workingDir, 'package.json');
 
         let zipPath = core.getInput('file');
 
@@ -26,7 +26,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} ${core.getInput('working-directory') || '.'} -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
@@ -35,7 +35,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
         await api.themes.upload({file: zipPath});
         console.log(`${zipPath} successfully uploaded.`); // eslint-disable-line no-console
     } catch (err) {
-        console.error(JSON.stringify(err, null, 2)); // eslint-disable-line no-console
+        console.error(err); // eslint-disable-line no-console
         process.exit(1);
     }
 }());
