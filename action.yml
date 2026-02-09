@@ -10,6 +10,10 @@ inputs:
   api-key:
     description: 'Ghost Admin API Key'
     required: true
+  version:
+    description: 'Ghost Version'
+    required: false
+    default: 'v6.0'
   exclude:
     description: 'Files or folders to exclude (space-separated list)'
     required: false
