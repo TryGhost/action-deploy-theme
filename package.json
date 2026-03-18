@@ -22,7 +22,7 @@
   "dependencies": {
     "@actions/core": "3.0.0",
     "@actions/exec": "3.0.0",
-    "@tryghost/admin-api": "1.14.6",
+    "@tryghost/admin-api": "1.14.7",
     "@vercel/ncc": "^0.38.0",
     "slug": "^11.0.0"
   }
