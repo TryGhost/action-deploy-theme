@@ -20,7 +20,7 @@
     "eslint-plugin-ghost": "3.5.0"
   },
   "dependencies": {
-    "@actions/core": "3.0.0",
+    "@actions/core": "3.0.1",
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.7",
     "@vercel/ncc": "^0.38.0",
