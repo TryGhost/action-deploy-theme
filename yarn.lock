@@ -185,12 +185,12 @@
   resolved "https://registry.yarnpkg.com/@simple-dom/interface/-/interface-1.4.0.tgz#e8feea579232017f89b0138e2726facda6fbb71f"
   integrity sha512-l5qumKFWU0S+4ZzMaLXFU8tQZsicHEMEyAxI5kDFGhJsRqDwe0a7/iPA/GdxlGyDKseQQAgIz5kzU7eXTrlSpA==
 
-"@tryghost/admin-api@1.14.8":
-  version "1.14.8"
-  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.14.8.tgz#66f9f35cd866eaa79dfc52e6cb255285bf7d19f0"
-  integrity sha512-0BZkiiFsZSNos5Iy9IJRgDo9InN3/lKDEySslqZV/hyBDBRtnZntNfDzLZjTaYDaH8h3gRuG7dCq6T95sKW+KA==
+"@tryghost/admin-api@1.14.9":
+  version "1.14.9"
+  resolved "https://registry.yarnpkg.com/@tryghost/admin-api/-/admin-api-1.14.9.tgz#150960ae14dd1e9b964ea13d40f24d9aef97678b"
+  integrity sha512-QuE+iaTYSvqHa8fFvU6TH860E07k7ZgO1UOQ8M9U8Rd9ISvDW7scfDZ8wbAnk24VQaIfine7sUwYhep0ukZ2cw==
   dependencies:
-    axios "1.15.2"
+    axios "1.16.0"
     form-data "4.0.5"
     jsonwebtoken "9.0.3"
 
@@ -357,12 +357,12 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.15.2.tgz#eb8fb6d30349abace6ade5b4cb4d9e8a0dc23e5b"
-  integrity sha512-wLrXxPtcrPTsNlJmKjkPnNPK2Ihe0hn0wGSaTEiHRPxwjvJwT3hKmXF4dpqxmPO9SoNb2FsYXj/xEo0gHN+D5A==
+axios@1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.16.0.tgz#f8e5dd931cef2a5f8c32216d5784eda2f8750eb7"
+  integrity sha512-6hp5CwvTPlN2A31g5dxnwAX0orzM7pmCRDLnZSX772mv8WDqICwFjowHuPs04Mc8deIld1+ejhtaMn5vp6b+1w==
   dependencies:
-    follow-redirects "^1.15.11"
+    follow-redirects "^1.16.0"
     form-data "^4.0.5"
     proxy-from-env "^2.1.0"
 
@@ -901,7 +901,7 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.4.2.tgz#f5c23c107f0f37de8dbdf24f13722b3b98d52726"
   integrity sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==
 
-follow-redirects@^1.15.11:
+follow-redirects@^1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.0.tgz#28474a159d3b9d11ef62050a14ed60e4df6d61bc"
   integrity sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==
