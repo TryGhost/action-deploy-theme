@@ -1,12 +1,12 @@
 {
   "name": "action-deploy-theme",
-  "version": "1.6.6",
+  "version": "2.0.0",
   "repository": "git@github.com:TryGhost/action-deploy-theme.git",
   "author": "Ghost Foundation",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build",
+    "build": "rollup --config rollup.config.js",
     "lint": "eslint . --ignore-pattern dist --ext .js --cache",
     "preship": "yarn build && yarn lint",
     "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
@@ -16,14 +16,18 @@
     "lib"
   ],
   "devDependencies": {
-    "eslint": "8.57.0",
-    "eslint-plugin-ghost": "3.5.0"
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "eslint": "8.57.1",
+    "eslint-plugin-ghost": "3.5.0",
+    "rollup": "^4.61.1"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.9",
-    "@vercel/ncc": "^0.38.0",
-    "slug": "^11.0.0"
-  }
+    "slug": "11.0.1"
+  },
+  "packageManager": "yarn@4.16.0"
 }

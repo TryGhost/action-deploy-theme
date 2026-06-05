@@ -18,5 +18,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
+          enable-corepack: true
       - run: yarn
       - run: yarn lint
