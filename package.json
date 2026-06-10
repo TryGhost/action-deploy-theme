@@ -1,30 +1,22 @@
 {
   "name": "action-deploy-theme",
   "version": "2.0.0",
-  "repository": "git@github.com:TryGhost/action-deploy-theme.git",
-  "author": "Ghost Foundation",
   "license": "MIT",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "ncc build src/index.ts",
-    "lint": "eslint src --ext .ts --cache",
-    "typecheck": "tsc --noEmit",
-    "preship": "pnpm typecheck && pnpm lint && pnpm build",
-    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then pnpm version \"${BUMP:-patch}\" && git push --follow-tags; fi"
-  },
-  "packageManager": "pnpm@11.5.2",
+  "author": "Ghost Foundation",
+  "repository": "git@github.com:TryGhost/action-deploy-theme.git",
   "files": [
     "dist",
     "action.yml"
   ],
-  "devDependencies": {
-    "@types/node": "25.9.2",
-    "@types/slug": "5.0.9",
-    "@typescript-eslint/eslint-plugin": "8.60.1",
-    "@typescript-eslint/parser": "8.60.1",
-    "eslint": "8.57.1",
-    "eslint-plugin-ghost": "3.5.0",
-    "typescript": "6.0.3"
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts",
+    "lint": "oxlint && oxfmt --check .",
+    "lint:fix": "oxlint --fix && oxfmt .",
+    "format": "oxfmt .",
+    "typecheck": "tsc --noEmit",
+    "preship": "pnpm typecheck && pnpm lint && pnpm build",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then pnpm version \"${BUMP:-patch}\" && git push --follow-tags; fi"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
@@ -32,5 +24,13 @@
     "@tryghost/admin-api": "1.14.9",
     "@vercel/ncc": "0.38.4",
     "slug": "11.0.1"
-  }
+  },
+  "devDependencies": {
+    "@types/node": "25.9.2",
+    "@types/slug": "5.0.9",
+    "oxfmt": "0.53.0",
+    "oxlint": "1.68.0",
+    "typescript": "6.0.3"
+  },
+  "packageManager": "pnpm@11.5.2"
 }
