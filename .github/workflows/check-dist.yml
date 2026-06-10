@@ -1,5 +1,11 @@
 # `dist/index.js` is what the runner actually executes, so it must always be
-# the build output of the current source. This guard fails when they drift.
+# the build output of the current source.
+#
+# Human PRs are expected to commit a rebuilt dist/ - the check-dist job fails
+# when source and dist drift. Renovate PRs are exempt: Renovate only bumps
+# manifests and can't rebuild dist, so the sync-dist job rebuilds dist on
+# every push to main and commits the result if it changed. That keeps main
+# releasable after auto-merged dependency updates.
 name: Check dist
 on:
   push:
@@ -12,6 +18,7 @@ permissions:
 
 jobs:
   check-dist:
+    if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
@@ -31,4 +38,31 @@ jobs:
             echo "Detected uncommitted changes after build. Run 'pnpm build' and commit dist/."
             git diff --stat --ignore-space-at-eol --text dist/
             exit 1
+          fi
+
+  sync-dist:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: sync-dist-main
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Commit rebuilt dist if it drifted
+        run: |
+          if [ -n "$(git status --porcelain dist/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add dist/
+            git commit -m "Rebuilt dist after dependency updates"
+            git push
           fi
