@@ -3,9 +3,13 @@ on:
   push:
     tags:
       - "v*"
+
+permissions:
+  contents: write
+
 jobs:
   update-major:
     name: Update Major Version Tag
     runs-on: ubuntu-latest
     steps:
-      - uses: nowactions/update-majorver@d95f48d454a24a603b30280450329e5b67a1b68a
+      - uses: nowactions/update-majorver@f2014bbbba95b635e990ce512c5653bd0f4753fb # v1.1.2
