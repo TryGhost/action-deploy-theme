@@ -55,14 +55,30 @@ jobs:
           node-version: 24
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - name: Commit rebuilt dist if it drifted
+      # Always rebuild against the fetched tip of main, not the trigger
+      # commit: main may have moved since this run was triggered. If the
+      # push still loses a race, the rebuild retries once against the new
+      # tip - and the push that moved main has its own sync-dist run queued
+      # behind this one anyway.
+      - name: Rebuild dist against the tip of main and commit if drifted
         run: |
-          if [ -n "$(git status --porcelain dist/)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2; do
+            git fetch origin main
+            git reset --hard FETCH_HEAD
+            pnpm install --frozen-lockfile
+            pnpm build
+            if [ -z "$(git status --porcelain dist/)" ]; then
+              echo "dist matches the build output - nothing to sync"
+              exit 0
+            fi
             git add dist/
             git commit -m "Rebuilt dist after dependency updates"
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "main moved during the rebuild (attempt $attempt), retrying against the new tip"
+          done
+          echo "Failed to push the rebuilt dist after 2 attempts"
+          exit 1
