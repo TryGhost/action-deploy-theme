@@ -17,19 +17,19 @@
     "action.yml"
   ],
   "devDependencies": {
-    "@types/node": "^25.9.2",
-    "@types/slug": "^5.0.9",
+    "@types/node": "25.9.2",
+    "@types/slug": "5.0.9",
     "@typescript-eslint/eslint-plugin": "8.56.1",
     "@typescript-eslint/parser": "8.56.1",
     "eslint": "8.57.0",
     "eslint-plugin-ghost": "3.5.0",
-    "typescript": "^6.0.3"
+    "typescript": "6.0.3"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.9",
-    "@vercel/ncc": "^0.38.0",
-    "slug": "^11.0.0"
+    "@vercel/ncc": "0.38.4",
+    "slug": "11.0.1"
   }
 }
