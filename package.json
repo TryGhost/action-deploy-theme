@@ -9,9 +9,10 @@
     "build": "ncc build src/index.ts",
     "lint": "eslint src --ext .ts --cache",
     "typecheck": "tsc --noEmit",
-    "preship": "yarn typecheck && yarn lint && yarn build",
-    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
+    "preship": "pnpm typecheck && pnpm lint && pnpm build",
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then pnpm version \"${BUMP:-patch}\" && git push --follow-tags; fi"
   },
+  "packageManager": "pnpm@11.5.1",
   "files": [
     "dist",
     "action.yml"

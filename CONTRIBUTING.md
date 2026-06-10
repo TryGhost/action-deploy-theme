@@ -1,38 +1,26 @@
 # 🛠 Ghost Theme Deploy for GitHub Actions (DEV)
 
-This is a guide for running your GitHub Action locally before deploying it, or contributing to the codebase! By installing and running this Action manually, you'll be able to control the environment variables that GitHub usually applies to the Action's container.
+This is a guide for developing and contributing to this GitHub Action. By installing and running this Action manually, you'll be able to control the environment variables that GitHub usually applies to the Action's container.
 
 ---
-
-## Install
-
-`npm install action-deploy-theme --save`
-
-or
-
-`yarn add action-deploy-theme`
-
 
 ## Develop
 
 1. `git clone` this repo & `cd` into it as usual
-2. Run `yarn` to install top-level dependencies.
-
-
-## Run
-
-- `yarn dev`
+2. Run `pnpm install` to install top-level dependencies.
 
 
 ## Test
 
-- `yarn lint` run just eslint
-- `yarn test` run lint and tests
+- `pnpm lint` run just eslint
+- `pnpm typecheck` run the TypeScript compiler checks
+- `pnpm build` bundle the action into `dist/` with ncc
 
 
 ## Publish
 
-- `yarn ship`
+- `pnpm ship` runs typecheck, lint & build, then bumps the patch version, tags and pushes
+- `BUMP=minor pnpm ship` (or `BUMP=major`) for larger version bumps
 
 ---
 
