@@ -24,11 +24,34 @@ export async function run(): Promise<void> {
             const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as {name: string};
             const themeName = core.getInput('theme-name') || slug(pkg.name);
             const themeZip = `${themeName}.zip`;
-            const exclude = core.getInput('exclude') || '';
+            const excludeRaw = core.getInput('exclude').trim();
+            const excludeArgs = excludeRaw ? excludeRaw.split(/\s+/) : [];
+            if (excludeArgs.some(pattern => pattern.startsWith('-'))) {
+                throw new Error('Invalid exclude pattern: option-like values are not allowed');
+            }
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* pnpm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(
+                'zip',
+                [
+                    '-r',
+                    themeZip,
+                    '.',
+                    '-x',
+                    '*.git*',
+                    '*.zip',
+                    'yarn*',
+                    'npm*',
+                    'pnpm*',
+                    'node_modules*',
+                    '*routes.yaml',
+                    '*redirects.yaml',
+                    '*redirects.json',
+                    ...excludeArgs
+                ],
+                {cwd: basePath}
+            );
         }
 
         zipPath = path.join(basePath, zipPath);

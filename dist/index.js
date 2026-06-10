@@ -48664,10 +48664,29 @@ async function run() {
             const pkg = JSON.parse(external_node_fs_default().readFileSync(pkgPath, 'utf8'));
             const themeName = getInput('theme-name') || slug_slug(pkg.name);
             const themeZip = `${themeName}.zip`;
-            const exclude = getInput('exclude') || '';
+            const excludeRaw = getInput('exclude').trim();
+            const excludeArgs = excludeRaw ? excludeRaw.split(/\s+/) : [];
+            if (excludeArgs.some(pattern => pattern.startsWith('-'))) {
+                throw new Error('Invalid exclude pattern: option-like values are not allowed');
+            }
             zipPath = themeZip;
             // Create a zip
-            await exec_exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* pnpm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], { cwd: basePath });
+            await exec_exec('zip', [
+                '-r',
+                themeZip,
+                '.',
+                '-x',
+                '*.git*',
+                '*.zip',
+                'yarn*',
+                'npm*',
+                'pnpm*',
+                'node_modules*',
+                '*routes.yaml',
+                '*redirects.yaml',
+                '*redirects.json',
+                ...excludeArgs
+            ], { cwd: basePath });
         }
         zipPath = external_node_path_default().join(basePath, zipPath);
         // Deploy it to the configured site
