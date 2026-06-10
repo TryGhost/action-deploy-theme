@@ -1,5 +1,3 @@
 {
-  "extends": [
-    "github>TryGhost/renovate-config"
-  ]
+  "extends": ["github>TryGhost/renovate-config"]
 }

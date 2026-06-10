@@ -8,7 +8,7 @@ declare module '@tryghost/admin-api' {
     class GhostAdminApi {
         constructor(options: GhostAdminApiOptions);
         themes: {
-            upload(options: {file: string}): Promise<unknown>;
+            upload(options: { file: string }): Promise<unknown>;
         };
     }
 

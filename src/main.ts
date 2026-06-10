@@ -11,7 +11,7 @@ export async function run(): Promise<void> {
         const api = new GhostAdminApi({
             url,
             key: core.getInput('api-key'),
-            version: core.getInput('version') || 'v6.0'
+            version: core.getInput('version') || 'v6.0',
         });
         const workingDir = core.getInput('working-directory');
         const basePath = path.join(process.env.GITHUB_WORKSPACE ?? '', workingDir);
@@ -21,12 +21,12 @@ export async function run(): Promise<void> {
 
         // Zip file was not provided - zip everything up!
         if (!zipPath) {
-            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as {name: string};
+            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as { name: string };
             const themeName = core.getInput('theme-name') || slug(pkg.name);
             const themeZip = `${themeName}.zip`;
             const excludeRaw = core.getInput('exclude').trim();
             const excludeArgs = excludeRaw ? excludeRaw.split(/\s+/) : [];
-            if (excludeArgs.some(pattern => pattern.startsWith('-'))) {
+            if (excludeArgs.some((pattern) => pattern.startsWith('-'))) {
                 throw new Error('Invalid exclude pattern: option-like values are not allowed');
             }
             zipPath = themeZip;
@@ -48,16 +48,16 @@ export async function run(): Promise<void> {
                     '*routes.yaml',
                     '*redirects.yaml',
                     '*redirects.json',
-                    ...excludeArgs
+                    ...excludeArgs,
                 ],
-                {cwd: basePath}
+                { cwd: basePath },
             );
         }
 
         zipPath = path.join(basePath, zipPath);
 
         // Deploy it to the configured site
-        await api.themes.upload({file: zipPath});
+        await api.themes.upload({ file: zipPath });
         core.info(`${zipPath} successfully uploaded.`);
     } catch (err) {
         core.setFailed(err instanceof Error ? err.message : String(err));
