@@ -1,11 +1,16 @@
 const path = require('path');
-const slug = require('slug');
-const core = require('@actions/core');
-const exec = require('@actions/exec');
 const GhostAdminApi = require('@tryghost/admin-api');
 
 (async function main() {
     try {
+        // slug and the @actions toolkit packages are ESM-only in their current
+        // majors, so they must be loaded via dynamic import from CommonJS.
+        const [core, exec, {default: slug}] = await Promise.all([
+            import('@actions/core'),
+            import('@actions/exec'),
+            import('slug')
+        ]);
+
         const url = core.getInput('api-url');
         const api = new GhostAdminApi({
             url,
@@ -26,7 +31,7 @@ const GhostAdminApi = require('@tryghost/admin-api');
             zipPath = themeZip;
 
             // Create a zip
-            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
+            await exec.exec(`zip -r ${themeZip} . -x *.git* *.zip yarn* npm* pnpm* node_modules* *routes.yaml *redirects.yaml *redirects.json ${exclude}`, [], {cwd: basePath});
         }
 
         zipPath = path.join(basePath, zipPath);
