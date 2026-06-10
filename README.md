@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Deploy Ghost Theme
-        uses: TryGhost/action-deploy-theme@v1
+        uses: TryGhost/action-deploy-theme@v2
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
