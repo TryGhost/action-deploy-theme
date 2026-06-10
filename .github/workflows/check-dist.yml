@@ -1,0 +1,29 @@
+# `dist/index.js` is what the runner actually executes, so it must always be
+# the build output of the current source. This guard fails when they drift.
+name: Check dist
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - name: Compare expected and actual dist
+        run: |
+          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after build. Run 'yarn build' and commit dist/."
+            git diff --stat --ignore-space-at-eol --text dist/
+            exit 1
+          fi

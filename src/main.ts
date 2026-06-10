@@ -1,16 +1,12 @@
-const path = require('path');
-const GhostAdminApi = require('@tryghost/admin-api');
+import fs from 'node:fs';
+import path from 'node:path';
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
+import slug from 'slug';
+import GhostAdminApi from '@tryghost/admin-api';
 
-(async function main() {
+export async function run(): Promise<void> {
     try {
-        // slug and the @actions toolkit packages are ESM-only in their current
-        // majors, so they must be loaded via dynamic import from CommonJS.
-        const [core, exec, {default: slug}] = await Promise.all([
-            import('@actions/core'),
-            import('@actions/exec'),
-            import('slug')
-        ]);
-
         const url = core.getInput('api-url');
         const api = new GhostAdminApi({
             url,
@@ -18,14 +14,15 @@ const GhostAdminApi = require('@tryghost/admin-api');
             version: core.getInput('version') || 'v6.0'
         });
         const workingDir = core.getInput('working-directory');
-        const basePath = path.join(process.env.GITHUB_WORKSPACE, workingDir);
-        const pkgPath = path.join(process.env.GITHUB_WORKSPACE, workingDir, 'package.json');
+        const basePath = path.join(process.env.GITHUB_WORKSPACE ?? '', workingDir);
+        const pkgPath = path.join(basePath, 'package.json');
 
         let zipPath = core.getInput('file');
 
         // Zip file was not provided - zip everything up!
         if (!zipPath) {
-            const themeName = core.getInput('theme-name') || slug(require(pkgPath).name);
+            const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8')) as {name: string};
+            const themeName = core.getInput('theme-name') || slug(pkg.name);
             const themeZip = `${themeName}.zip`;
             const exclude = core.getInput('exclude') || '';
             zipPath = themeZip;
@@ -38,9 +35,8 @@ const GhostAdminApi = require('@tryghost/admin-api');
 
         // Deploy it to the configured site
         await api.themes.upload({file: zipPath});
-        console.log(`${zipPath} successfully uploaded.`); // eslint-disable-line no-console
+        core.info(`${zipPath} successfully uploaded.`);
     } catch (err) {
-        console.error(err); // eslint-disable-line no-console
-        process.exit(1);
+        core.setFailed(err instanceof Error ? err.message : String(err));
     }
-}());
+}

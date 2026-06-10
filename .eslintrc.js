@@ -1,6 +1,9 @@
 module.exports = {
     plugins: ['ghost'],
     extends: [
-        'plugin:ghost/node'
-    ]
+        'plugin:ghost/ts'
+    ],
+    parserOptions: {
+        project: './tsconfig.json'
+    }
 };
