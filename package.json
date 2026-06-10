@@ -4,26 +4,32 @@
   "repository": "git@github.com:TryGhost/action-deploy-theme.git",
   "author": "Ghost Foundation",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build",
-    "lint": "eslint . --ignore-pattern dist --ext .js --cache",
-    "preship": "yarn build && yarn lint",
+    "build": "ncc build src/index.ts",
+    "lint": "eslint src --ext .ts --cache",
+    "typecheck": "tsc --noEmit",
+    "preship": "yarn typecheck && yarn lint && yarn build",
     "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn version && git push --follow-tags; fi"
   },
   "files": [
-    "index.js",
-    "lib"
+    "dist",
+    "action.yml"
   ],
   "devDependencies": {
+    "@types/node": "25.9.2",
+    "@types/slug": "5.0.9",
+    "@typescript-eslint/eslint-plugin": "8.56.1",
+    "@typescript-eslint/parser": "8.56.1",
     "eslint": "8.57.0",
-    "eslint-plugin-ghost": "3.5.0"
+    "eslint-plugin-ghost": "3.5.0",
+    "typescript": "6.0.3"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.9",
-    "@vercel/ncc": "^0.38.0",
-    "slug": "^11.0.0"
+    "@vercel/ncc": "0.38.4",
+    "slug": "11.0.1"
   }
 }
