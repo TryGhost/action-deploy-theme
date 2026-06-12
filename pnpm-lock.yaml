@@ -18,8 +18,8 @@ importers:
         specifier: 1.14.10
         version: 1.14.10
       '@vercel/ncc':
-        specifier: 0.38.4
-        version: 0.38.4
+        specifier: 0.44.0
+        version: 0.44.0
       slug:
         specifier: 11.0.1
         version: 11.0.1
@@ -307,8 +307,8 @@ packages:
   '@types/slug@5.0.9':
     resolution: {integrity: sha512-6Yp8BSplP35Esa/wOG1wLNKiqXevpQTEF/RcL/NV6BBQaMmZh4YlDwCgrrFSoUE4xAGvnKd5c+lkQJmPrBAzfQ==}
 
-  '@vercel/ncc@0.38.4':
-    resolution: {integrity: sha512-8LwjnlP39s08C08J5NstzriPvW1SP8Zfpp1BvC2sI35kPeZnHfxVkCwu4/+Wodgnd60UtT1n8K8zw+Mp7J9JmQ==}
+  '@vercel/ncc@0.44.0':
+    resolution: {integrity: sha512-pHyI+bZokSgIscTKFSmpNk5vZzmOrb9RW0Vu4SRyqUvkJ0kgg3PzaZLLDVTFXhbUiCqg0/Eu8L4fKtgViA92kg==}
     hasBin: true
 
   agent-base@6.0.2:
@@ -667,7 +667,7 @@ snapshots:
 
   '@types/slug@5.0.9': {}
 
-  '@vercel/ncc@0.38.4': {}
+  '@vercel/ncc@0.44.0': {}
 
   agent-base@6.0.2:
     dependencies:
