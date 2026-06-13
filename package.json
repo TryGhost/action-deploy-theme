@@ -26,7 +26,7 @@
     "slug": "11.0.1"
   },
   "devDependencies": {
-    "@types/node": "25.9.2",
+    "@types/node": "25.9.3",
     "@types/slug": "5.0.9",
     "oxfmt": "0.54.0",
     "oxlint": "1.69.0",
