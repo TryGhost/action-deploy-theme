@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/node": "25.9.3",
     "@types/slug": "5.0.9",
-    "oxfmt": "0.54.0",
+    "oxfmt": "0.55.0",
     "oxlint": "1.69.0",
     "typescript": "6.0.3"
   },
