@@ -25,8 +25,8 @@ importers:
         version: 11.0.1
     devDependencies:
       '@types/node':
-        specifier: 25.9.3
-        version: 25.9.3
+        specifier: 25.9.4
+        version: 25.9.4
       '@types/slug':
         specifier: 5.0.9
         version: 5.0.9
@@ -301,8 +301,8 @@ packages:
   '@tryghost/admin-api@1.14.10':
     resolution: {integrity: sha512-B7Ov1Y/VhuNFsvDyN6DsNFcoqjpUccNrYFXsK5oy9sobZ/6AoRRW2kI4SHn4hrCcP89xPipVhTMcmhvoh0IhvQ==}
 
-  '@types/node@25.9.3':
-    resolution: {integrity: sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==}
+  '@types/node@25.9.4':
+    resolution: {integrity: sha512-dszCsrKb5U7ZsVZBWiHFklTloVl0mSEnWH/iZXfZUlI4rzCUnsvGmgqfuVRHL54ugE7/wRuxEIXRa2iMZ+BG6g==}
 
   '@types/slug@5.0.9':
     resolution: {integrity: sha512-6Yp8BSplP35Esa/wOG1wLNKiqXevpQTEF/RcL/NV6BBQaMmZh4YlDwCgrrFSoUE4xAGvnKd5c+lkQJmPrBAzfQ==}
@@ -661,7 +661,7 @@ snapshots:
       - debug
       - supports-color
 
-  '@types/node@25.9.3':
+  '@types/node@25.9.4':
     dependencies:
       undici-types: 7.24.6
 
