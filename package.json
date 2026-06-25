@@ -16,7 +16,7 @@
     "format": "oxfmt .",
     "typecheck": "tsc --noEmit",
     "preship": "pnpm typecheck && pnpm lint && pnpm build",
-    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then pnpm version \"${BUMP:-patch}\" && git push --follow-tags; fi"
+    "ship": "pro-ship"
   },
   "dependencies": {
     "@actions/core": "3.0.1",
@@ -26,6 +26,7 @@
     "slug": "11.0.1"
   },
   "devDependencies": {
+    "@tryghost/pro-ship": "1.1.2",
     "@types/node": "25.9.4",
     "@types/slug": "5.0.9",
     "oxfmt": "0.55.0",

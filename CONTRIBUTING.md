@@ -18,8 +18,9 @@ This is a guide for developing and contributing to this GitHub Action. By instal
 
 ## Publish
 
-- `pnpm ship` runs typecheck, lint & build, then bumps the patch version, tags and pushes
-- `BUMP=minor pnpm ship` (or `BUMP=major`) for larger version bumps
+- `pnpm ship patch` runs typecheck, lint & build, then bumps, commits, tags and pushes
+- `pnpm ship minor` or `pnpm ship major` for larger version bumps
+- `pnpm ship 2.1.0` for an explicit version
 
 ---
 
