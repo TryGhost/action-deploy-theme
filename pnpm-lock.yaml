@@ -25,8 +25,8 @@ importers:
         version: 11.0.1
     devDependencies:
       '@tryghost/pro-ship':
-        specifier: 1.1.2
-        version: 1.1.2
+        specifier: 1.1.4
+        version: 1.1.4
       '@types/node':
         specifier: 25.9.4
         version: 25.9.4
@@ -304,8 +304,8 @@ packages:
   '@tryghost/admin-api@1.14.10':
     resolution: {integrity: sha512-B7Ov1Y/VhuNFsvDyN6DsNFcoqjpUccNrYFXsK5oy9sobZ/6AoRRW2kI4SHn4hrCcP89xPipVhTMcmhvoh0IhvQ==}
 
-  '@tryghost/pro-ship@1.1.2':
-    resolution: {integrity: sha512-o20xQ/kFbwvq9NylXN+/G3kxNAKNicFPOysAL+MspjStFftThGBj7miCgedWscZoQscDsb/6uKPFgRUyHti7Mw==}
+  '@tryghost/pro-ship@1.1.4':
+    resolution: {integrity: sha512-k4okNuZwxWfyumyC5+A+/96cE/bnBZmcigghWNTP6n/8QuMX4eFQoPlu3XGyUToF5vKGfl1HU5pELPbwSLDYLA==}
     engines: {node: '>=20.20.0'}
     hasBin: true
 
@@ -678,7 +678,7 @@ snapshots:
       - debug
       - supports-color
 
-  '@tryghost/pro-ship@1.1.2':
+  '@tryghost/pro-ship@1.1.4':
     dependencies:
       '@tryghost/root-utils': 2.3.1
       semver: 7.8.5
