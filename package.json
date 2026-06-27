@@ -26,7 +26,7 @@
     "slug": "11.0.1"
   },
   "devDependencies": {
-    "@tryghost/pro-ship": "1.1.2",
+    "@tryghost/pro-ship": "1.1.4",
     "@types/node": "25.9.4",
     "@types/slug": "5.0.9",
     "oxfmt": "0.56.0",
