@@ -15,8 +15,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@tryghost/admin-api':
-        specifier: 1.14.10
-        version: 1.14.10
+        specifier: 1.14.11
+        version: 1.14.11
       '@vercel/ncc':
         specifier: 0.44.1
         version: 0.44.1
@@ -25,8 +25,8 @@ importers:
         version: 11.0.1
     devDependencies:
       '@tryghost/pro-ship':
-        specifier: 1.1.4
-        version: 1.1.4
+        specifier: 1.1.5
+        version: 1.1.5
       '@types/node':
         specifier: 25.9.4
         version: 25.9.4
@@ -301,11 +301,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tryghost/admin-api@1.14.10':
-    resolution: {integrity: sha512-B7Ov1Y/VhuNFsvDyN6DsNFcoqjpUccNrYFXsK5oy9sobZ/6AoRRW2kI4SHn4hrCcP89xPipVhTMcmhvoh0IhvQ==}
+  '@tryghost/admin-api@1.14.11':
+    resolution: {integrity: sha512-dI4buzO/oR4Hop8R9KowNgjqyVUs0wC+/j6g8vFmOOmSEtGaAT1OF22SW09f9c/Ab7eY0CXXPLIDM9bbgAZjVQ==}
 
-  '@tryghost/pro-ship@1.1.4':
-    resolution: {integrity: sha512-k4okNuZwxWfyumyC5+A+/96cE/bnBZmcigghWNTP6n/8QuMX4eFQoPlu3XGyUToF5vKGfl1HU5pELPbwSLDYLA==}
+  '@tryghost/pro-ship@1.1.5':
+    resolution: {integrity: sha512-gwd4ynAnEHkj6bx+tfkZCYaL+WlNHQQmCkAJn7Q2H0Uq+mG74i2wwxUWr+wTuyxjLg8KviMux5uwtkEQfzi1VA==}
     engines: {node: '>=20.20.0'}
     hasBin: true
 
@@ -329,8 +329,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.17.0:
-    resolution: {integrity: sha512-J8SwNxprqqpbfenehxWYXE7CW+wM1BB4w3+N+g+/Wx40xM4rsLrfPmHHxSWIxJLYDgSY/HqlFPIYb2/S3rxafw==}
+  axios@1.18.1:
+    resolution: {integrity: sha512-3nTvFlvpn9Zu/RkHUqtc7/+al4UpRW5az71ap5zccp6e8RAYEzhMTecX8Dz1wWDYrPpUoB1HAQEGEAEvUr7S9g==}
 
   buffer-equal-constant-time@1.0.1:
     resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
@@ -396,6 +396,10 @@ packages:
 
   form-data@4.0.5:
     resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
+    engines: {node: '>= 6'}
+
+  form-data@4.0.6:
+    resolution: {integrity: sha512-vKatAh4SlVfgbv+YtmhiRjhEMJsYpsG1Y2rMQtR+SVSbytsSD1YGzDIcrAJmdFec88u/+VoGmxnl+80gL1tRCQ==}
     engines: {node: '>= 6'}
 
   function-bind@1.1.2:
@@ -669,16 +673,16 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.72.0':
     optional: true
 
-  '@tryghost/admin-api@1.14.10':
+  '@tryghost/admin-api@1.14.11':
     dependencies:
-      axios: 1.17.0
-      form-data: 4.0.5
+      axios: 1.18.1
+      form-data: 4.0.6
       jsonwebtoken: 9.0.3
     transitivePeerDependencies:
       - debug
       - supports-color
 
-  '@tryghost/pro-ship@1.1.4':
+  '@tryghost/pro-ship@1.1.5':
     dependencies:
       '@tryghost/root-utils': 2.3.1
       semver: 7.8.5
@@ -704,7 +708,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.17.0:
+  axios@1.18.1:
     dependencies:
       follow-redirects: 1.16.0
       form-data: 4.0.5
@@ -763,6 +767,14 @@ snapshots:
   follow-redirects@1.16.0: {}
 
   form-data@4.0.5:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      es-set-tostringtag: 2.1.0
+      hasown: 2.0.4
+      mime-types: 2.1.35
+
+  form-data@4.0.6:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
