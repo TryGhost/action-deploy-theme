@@ -49986,6 +49986,87 @@ var admin_api_default = /*#__PURE__*/__nccwpck_require__.n(admin_api);
 
 
 
+function isWithin(directory, candidate) {
+    const relativePath = external_node_path_default().relative(directory, candidate);
+    return (relativePath === '' ||
+        (relativePath !== '..' &&
+            !relativePath.startsWith(`..${(external_node_path_default()).sep}`) &&
+            !external_node_path_default().isAbsolute(relativePath)));
+}
+function resolveExistingPathWithin(resolutionDirectory, boundaryDirectory, inputPath, inputName, boundaryName, expectedType) {
+    const candidate = external_node_path_default().resolve(resolutionDirectory, inputPath || '.');
+    if (external_node_path_default().isAbsolute(inputPath) || !isWithin(boundaryDirectory, candidate)) {
+        throw new Error(`${inputName} must resolve within ${boundaryName}`);
+    }
+    const realDirectory = external_node_fs_default().realpathSync(boundaryDirectory);
+    const realCandidate = external_node_fs_default().realpathSync(candidate);
+    if (!isWithin(realDirectory, realCandidate)) {
+        throw new Error(`${inputName} must resolve within ${boundaryName}`);
+    }
+    const candidateStats = external_node_fs_default().statSync(realCandidate);
+    if (expectedType === 'directory' && !candidateStats.isDirectory()) {
+        throw new Error(`${inputName} must be a directory`);
+    }
+    if (expectedType === 'file' && !candidateStats.isFile()) {
+        throw new Error(`${inputName} must be a regular file`);
+    }
+    return candidate;
+}
+function assertSafeThemeName(themeName) {
+    const containsControlCharacter = [...themeName].some((character) => {
+        const codePoint = character.charCodeAt(0);
+        return codePoint <= 0x1f || codePoint === 0x7f;
+    });
+    if (!themeName ||
+        themeName === '.' ||
+        themeName === '..' ||
+        themeName.startsWith('-') ||
+        /[/\\]/.test(themeName) ||
+        containsControlCharacter) {
+        throw new Error('theme-name must be a name, not a path');
+    }
+}
+function prepareArchivePath(directory, themeName) {
+    const archivePath = external_node_path_default().resolve(directory, `${themeName}.zip`);
+    if (external_node_fs_default().existsSync(archivePath)) {
+        const archiveStats = external_node_fs_default().lstatSync(archivePath);
+        if (!archiveStats.isFile() || archiveStats.isSymbolicLink()) {
+            throw new Error('Generated archive path must be a regular file');
+        }
+        external_node_fs_default().unlinkSync(archivePath);
+    }
+    return archivePath;
+}
+function isBuiltInExcluded(relativePath) {
+    const archivePath = relativePath.split((external_node_path_default()).sep).join('/');
+    return (archivePath.includes('.git') ||
+        archivePath.endsWith('.zip') ||
+        /^(?:yarn|npm|pnpm|node_modules)/.test(archivePath) ||
+        archivePath === 'AGENTS.md' ||
+        archivePath === 'CLAUDE.md' ||
+        archivePath === 'pnpm-workspace.yaml' ||
+        archivePath.endsWith('routes.yaml') ||
+        archivePath.endsWith('redirects.yaml') ||
+        archivePath.endsWith('redirects.json'));
+}
+function assertSafeThemeSource(directory, currentDirectory = directory) {
+    for (const entry of external_node_fs_default().readdirSync(currentDirectory, { withFileTypes: true })) {
+        const entryPath = external_node_path_default().join(currentDirectory, entry.name);
+        const relativePath = external_node_path_default().relative(directory, entryPath);
+        if (isBuiltInExcluded(relativePath)) {
+            continue;
+        }
+        if (entry.isSymbolicLink()) {
+            throw new Error(`Theme source must not contain symlinks: ${relativePath}`);
+        }
+        if (entry.isDirectory()) {
+            assertSafeThemeSource(directory, entryPath);
+        }
+        else if (!entry.isFile()) {
+            throw new Error(`Theme source contains an unsupported file: ${relativePath}`);
+        }
+    }
+}
 async function run() {
     try {
         const url = getInput('api-url');
@@ -49994,24 +50075,35 @@ async function run() {
             key: getInput('api-key'),
             version: getInput('version') || 'v6.0',
         });
-        const workingDir = getInput('working-directory');
-        const basePath = external_node_path_default().join(process.env.GITHUB_WORKSPACE ?? '', workingDir);
-        const pkgPath = external_node_path_default().join(basePath, 'package.json');
+        const workspace = process.env.GITHUB_WORKSPACE;
+        if (!workspace) {
+            throw new Error('GITHUB_WORKSPACE is not set');
+        }
+        const workspacePath = external_node_path_default().resolve(workspace);
+        external_node_fs_default().realpathSync(workspacePath);
+        const basePath = resolveExistingPathWithin(workspacePath, workspacePath, getInput('working-directory'), 'working-directory', 'GITHUB_WORKSPACE', 'directory');
         let zipPath = getInput('file');
         // Zip file was not provided - zip everything up!
         if (!zipPath) {
+            const pkgPath = resolveExistingPathWithin(basePath, workspacePath, 'package.json', 'package.json', 'GITHUB_WORKSPACE', 'file');
             const pkg = JSON.parse(external_node_fs_default().readFileSync(pkgPath, 'utf8'));
+            if (typeof pkg.name !== 'string' || !pkg.name.trim()) {
+                throw new Error('package.json must contain a non-empty string name');
+            }
             const themeName = getInput('theme-name') || slug_slug(pkg.name);
+            assertSafeThemeName(themeName);
             const themeZip = `${themeName}.zip`;
             const excludeRaw = getInput('exclude').trim();
             const excludeArgs = excludeRaw ? excludeRaw.split(/\s+/) : [];
             if (excludeArgs.some((pattern) => pattern.startsWith('-'))) {
                 throw new Error('Invalid exclude pattern: option-like values are not allowed');
             }
-            zipPath = themeZip;
+            assertSafeThemeSource(basePath);
+            zipPath = prepareArchivePath(basePath, themeName);
             // Create a zip
             await exec_exec('zip', [
                 '-r',
+                '-y',
                 themeZip,
                 '.',
                 '-x',
@@ -50029,8 +50121,13 @@ async function run() {
                 '*redirects.json',
                 ...excludeArgs,
             ], { cwd: basePath });
+            if (!external_node_fs_default().lstatSync(zipPath).isFile()) {
+                throw new Error('Generated archive path must be a regular file');
+            }
         }
-        zipPath = external_node_path_default().join(basePath, zipPath);
+        else {
+            zipPath = resolveExistingPathWithin(basePath, workspacePath, zipPath, 'file', 'GITHUB_WORKSPACE', 'file');
+        }
         // Deploy it to the configured site
         await api.themes.upload({ file: zipPath });
         info(`${zipPath} successfully uploaded.`);

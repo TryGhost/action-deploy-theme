@@ -74,13 +74,15 @@ The `with` section must provide the API URL and key. Store both values under the
 | `api-key`           | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations                                                                                     | `string` | **Yes**  |
 | `version`           | The [minimum Ghost Admin API version](https://docs.ghost.org/admin-api/#accept-version-header) the action expects the target site to support. Defaults to `v6.0`                                                      | `string` | No       |
 | `exclude`           | A space-separated list of files and folders to exclude from the generated zip file in addition to the [defaults](https://github.com/TryGhost/action-deploy-theme/blob/main/src/main.ts), e.g. `"gulpfile.js *dist/*"` | `string` | No       |
-| `theme-name`        | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"`                                                                                            | `string` | No       |
-| `file`              | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored                                                                                                                     | `string` | No       |
-| `working-directory` | A custom directory to zip when a theme is in a subdirectory, e.g. `packages/my-theme`                                                                                                                                 | `string` | No       |
+| `theme-name`        | A filename-safe custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"`                                                                              | `string` | No       |
+| `file`              | Path to a trusted, built zip file, resolved from `working-directory`. The path must stay inside the workspace. If set, `exclude` and `theme-name` are ignored                                                         | `string` | No       |
+| `working-directory` | A directory inside the workspace to zip when a theme is in a subdirectory, e.g. `packages/my-theme`                                                                                                                   | `string` | No       |
 
 &nbsp;
 
 :bulb: Use `exclude` to reduce the size of the zip file & keep deployment times minimal.
+
+Generated archives reject symbolic links in the theme source so files outside the workspace cannot be packaged accidentally. This applies even when a symlink matches a custom `exclude` pattern; paths covered by the action's built-in exclusions are ignored. Prebuilt archives supplied with `file` are uploaded as-is and should come from a trusted build step.
 
 &nbsp;
 

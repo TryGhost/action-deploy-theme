@@ -31,15 +31,18 @@ vi.mock(import('@tryghost/admin-api'), () => ({
 import { run } from '../src/main';
 
 describe('theme packaging acceptance', () => {
+    let externalPaths: string[];
+    let inputs: Record<string, string>;
     let workspace: string;
     let previousWorkspace: string | undefined;
 
     beforeEach(() => {
+        externalPaths = [];
         workspace = fs.mkdtempSync(path.join(os.tmpdir(), 'deploy-theme-acceptance-'));
         previousWorkspace = process.env.GITHUB_WORKSPACE;
         process.env.GITHUB_WORKSPACE = workspace;
 
-        const inputs: Record<string, string> = {
+        inputs = {
             'api-key': 'test-api-key',
             'api-url': 'https://example.test',
             exclude: 'private.txt',
@@ -55,6 +58,9 @@ describe('theme packaging acceptance', () => {
             process.env.GITHUB_WORKSPACE = previousWorkspace;
         }
         fs.rmSync(workspace, { force: true, recursive: true });
+        for (const externalPath of externalPaths) {
+            fs.rmSync(externalPath, { force: true, recursive: true });
+        }
     });
 
     it('creates a real archive containing only deployable theme files', async () => {
@@ -99,6 +105,84 @@ describe('theme packaging acceptance', () => {
         }
         expect(mocks.upload).toHaveBeenCalledWith({ file: zipPath });
         expect(mocks.info).toHaveBeenCalledWith(`${zipPath} successfully uploaded.`);
+        expect(mocks.setFailed).not.toHaveBeenCalled();
+    });
+
+    it('does not package a symlink to a file outside the workspace', async () => {
+        const externalDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'deploy-theme-external-'));
+        externalPaths.push(externalDirectory);
+        const externalFile = path.join(externalDirectory, 'secret.txt');
+        fs.writeFileSync(externalFile, 'secret');
+        fs.writeFileSync(path.join(workspace, 'package.json'), JSON.stringify({ name: 'theme' }));
+        fs.symlinkSync(externalFile, path.join(workspace, 'asset.txt'));
+
+        await run();
+
+        expect(mocks.setFailed).toHaveBeenCalledWith(
+            'Theme source must not contain symlinks: asset.txt',
+        );
+        expect(mocks.upload).not.toHaveBeenCalled();
+        expect(fs.existsSync(path.join(workspace, 'theme.zip'))).toBe(false);
+    });
+
+    it('ignores an excluded node_modules symlink without dereferencing it', async () => {
+        const externalDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'deploy-theme-external-'));
+        externalPaths.push(externalDirectory);
+        fs.writeFileSync(path.join(externalDirectory, 'secret.txt'), 'secret');
+        fs.writeFileSync(path.join(workspace, 'package.json'), JSON.stringify({ name: 'theme' }));
+        fs.writeFileSync(path.join(workspace, 'index.hbs'), 'theme');
+        fs.symlinkSync(externalDirectory, path.join(workspace, 'node_modules'));
+
+        await run();
+
+        const archiveFiles = execFileSync('unzip', ['-Z1', 'theme.zip'], {
+            cwd: workspace,
+            encoding: 'utf8',
+        })
+            .trim()
+            .split('\n');
+        expect(archiveFiles).toEqual(expect.arrayContaining(['package.json', 'index.hbs']));
+        expect(archiveFiles).not.toContain('node_modules/secret.txt');
+        expect(mocks.setFailed).not.toHaveBeenCalled();
+    });
+
+    it('rejects a nested node_modules symlink that the root exclusion does not match', async () => {
+        const externalDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'deploy-theme-external-'));
+        externalPaths.push(externalDirectory);
+        fs.writeFileSync(path.join(externalDirectory, 'secret.txt'), 'secret');
+        fs.writeFileSync(path.join(workspace, 'package.json'), JSON.stringify({ name: 'theme' }));
+        fs.mkdirSync(path.join(workspace, 'packages', 'theme'), { recursive: true });
+        fs.symlinkSync(
+            externalDirectory,
+            path.join(workspace, 'packages', 'theme', 'node_modules'),
+        );
+
+        await run();
+
+        expect(mocks.setFailed).toHaveBeenCalledWith(
+            `Theme source must not contain symlinks: ${path.join('packages', 'theme', 'node_modules')}`,
+        );
+        expect(mocks.upload).not.toHaveBeenCalled();
+        expect(fs.existsSync(path.join(workspace, 'theme.zip'))).toBe(false);
+    });
+
+    it('rebuilds an existing archive without retaining stale entries', async () => {
+        fs.writeFileSync(path.join(workspace, 'package.json'), JSON.stringify({ name: 'theme' }));
+        fs.writeFileSync(path.join(workspace, 'index.hbs'), 'theme');
+        fs.writeFileSync(path.join(workspace, 'stale-secret.txt'), 'secret');
+        execFileSync('zip', ['theme.zip', 'stale-secret.txt'], { cwd: workspace });
+        fs.rmSync(path.join(workspace, 'stale-secret.txt'));
+
+        await run();
+
+        const archiveFiles = execFileSync('unzip', ['-Z1', 'theme.zip'], {
+            cwd: workspace,
+            encoding: 'utf8',
+        })
+            .trim()
+            .split('\n');
+        expect(archiveFiles).toEqual(expect.arrayContaining(['package.json', 'index.hbs']));
+        expect(archiveFiles).not.toContain('stale-secret.txt');
         expect(mocks.setFailed).not.toHaveBeenCalled();
     });
 });
