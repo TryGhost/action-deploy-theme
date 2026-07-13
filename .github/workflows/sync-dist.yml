@@ -70,8 +70,6 @@ jobs:
     if: needs.rebuild-dist.outputs.changed == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 5
-    permissions:
-      contents: write # Push the generated bundle back to main.
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -86,14 +84,22 @@ jobs:
         shell: bash
         env:
           BASE_SHA: ${{ needs.rebuild-dist.outputs.base-sha }}
-          GITHUB_TOKEN: ${{ github.token }}
+          SYNC_DIST_GH_TOKEN: ${{ secrets.SYNC_DIST_GH_TOKEN }}
         run: |
+          if [ -z "$SYNC_DIST_GH_TOKEN" ]; then
+            echo "::error::SYNC_DIST_GH_TOKEN is not configured"
+            exit 1
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dist/
           git commit -m "Rebuilt dist after dependency updates"
 
-          auth_header=$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')
+          # This is a fine-grained PAT limited to this repository with only
+          # Contents: read and write. Its owner belongs to Ghost Foundation so
+          # the standard ruleset permits this generated commit on main.
+          auth_header=$(printf 'x-access-token:%s' "$SYNC_DIST_GH_TOKEN" | base64 | tr -d '\n')
           if git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth_header" push origin HEAD:main; then
             exit 0
           fi
