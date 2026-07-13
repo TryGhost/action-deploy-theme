@@ -49979,7 +49979,7 @@ slug.setLocale = function (locale) {
 // EXTERNAL MODULE: ./node_modules/.pnpm/@tryghost+admin-api@1.14.11/node_modules/@tryghost/admin-api/index.js
 var admin_api = __nccwpck_require__(3591);
 var admin_api_default = /*#__PURE__*/__nccwpck_require__.n(admin_api);
-;// CONCATENATED MODULE: ./src/main.ts
+;// CONCATENATED MODULE: ./.build/main.js
 
 
 
@@ -50137,7 +50137,7 @@ async function run() {
     }
 }
 
-;// CONCATENATED MODULE: ./src/index.ts
+;// CONCATENATED MODULE: ./.build/index.js
 
 void run();
 

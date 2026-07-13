@@ -62,3 +62,4 @@ typings/
 .DS_Store
 
 # Action Deploy Theme Custom
+.build/
