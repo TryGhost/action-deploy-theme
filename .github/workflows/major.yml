@@ -4,12 +4,13 @@ on:
     tags:
       - 'v*'
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   update-major:
     name: Update Major Version Tag
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Move the floating major version tag to this release.
     steps:
       - uses: nowactions/update-majorver@f2014bbbba95b635e990ce512c5653bd0f4753fb # v1.1.2
