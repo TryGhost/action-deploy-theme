@@ -1,0 +1,108 @@
+# `dist/index.js` is what the runner actually executes, so it must always be
+# the build output of the current source.
+#
+# Human pull requests verify their committed bundle in the CI workflow.
+# Renovate pull requests are exempt from committing rebuilt dist, so this
+# workflow repairs the bundle on main after Renovate changes merge.
+name: Sync dist
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-dist-main
+
+jobs:
+  rebuild-dist:
+    name: Rebuild dist
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      base-sha: ${{ steps.rebuild.outputs.base-sha }}
+      changed: ${{ steps.rebuild.outputs.changed }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      # Always rebuild against the fetched tip of main, not the trigger commit.
+      # This read-only job never receives permission to push repository contents.
+      - name: Rebuild dist against the tip of main
+        id: rebuild
+        run: |
+          git fetch origin main
+          git reset --hard FETCH_HEAD
+          base_sha=$(git rev-parse HEAD)
+          echo "base-sha=$base_sha" >> "$GITHUB_OUTPUT"
+
+          pnpm install --frozen-lockfile
+          pnpm build
+          if [ -z "$(git status --porcelain dist/)" ]; then
+            echo "dist matches the build output - nothing to sync"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload rebuilt dist
+        if: steps.rebuild.outputs.changed == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: rebuilt-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  sync-dist:
+    name: Sync dist
+    needs: rebuild-dist
+    if: needs.rebuild-dist.outputs.changed == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write # Push the generated bundle back to main.
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          ref: ${{ needs.rebuild-dist.outputs.base-sha }}
+          persist-credentials: false
+      - name: Download rebuilt dist
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: rebuilt-dist
+          path: dist/
+      - name: Commit and push rebuilt dist
+        shell: bash
+        env:
+          BASE_SHA: ${{ needs.rebuild-dist.outputs.base-sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/
+          git commit -m "Rebuilt dist after dependency updates"
+
+          auth_header=$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 | tr -d '\n')
+          if git -c http.https://github.com/.extraheader="AUTHORIZATION: basic $auth_header" push origin HEAD:main; then
+            exit 0
+          fi
+
+          git fetch origin main
+          if [ "$(git rev-parse FETCH_HEAD)" != "$BASE_SHA" ]; then
+            echo "main moved after the rebuild; its queued sync-dist run will rebuild the new tip"
+            exit 0
+          fi
+
+          echo "Failed to push the rebuilt dist while main was unchanged"
+          exit 1

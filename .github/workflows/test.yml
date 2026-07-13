@@ -1,22 +1,20 @@
-name: Test
+name: CI
+
 on:
   pull_request:
-  push:
-    branches:
-      - main
-      - 'renovate/*'
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/'))
-    strategy:
-      matrix:
-        node: [22, 24]
-    name: Node ${{ matrix.node }}
+  validate:
+    name: Lint, typecheck, and build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -24,10 +22,90 @@ jobs:
       - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 24
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm build
+
+  test:
+    name: Tests and coverage
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:coverage
+
+  check-dist:
+    name: Committed dist matches build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Compare expected and actual dist
+        if: >-
+          ${{
+            github.event.pull_request.user.login != 'renovate[bot]' ||
+            github.event.pull_request.head.repo.full_name != github.repository ||
+            !startsWith(github.head_ref, 'renovate/')
+          }}
+        run: |
+          untracked="$(git ls-files --others --exclude-standard -- dist/)"
+          if ! git diff --quiet --ignore-space-at-eol --text -- dist/ || [ -n "$untracked" ]; then
+            echo "Detected uncommitted changes after build. Run 'pnpm build' and commit dist/."
+            git diff --stat --ignore-space-at-eol --text -- dist/
+            if [ -n "$untracked" ]; then
+              printf 'Untracked files:\n%s\n' "$untracked"
+            fi
+            exit 1
+          fi
+      - name: Apply Renovate dist exemption
+        if: >-
+          ${{
+            github.event.pull_request.user.login == 'renovate[bot]' &&
+            github.event.pull_request.head.repo.full_name == github.repository &&
+            startsWith(github.head_ref, 'renovate/')
+          }}
+        run: echo "Renovate PRs are rebuilt by the sync-dist workflow after merge."
+
+  required-checks-pass:
+    name: Required checks pass
+    if: always()
+    needs:
+      - validate
+      - test
+      - check-dist
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    permissions: {}
+    steps:
+      - name: Verify all required jobs succeeded
+        env:
+          REQUIRED_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: |
+          if ! jq --exit-status 'all(.[]; .result == "success")' <<< "$REQUIRED_JOB_RESULTS"; then
+            echo "One or more required jobs did not succeed:"
+            jq . <<< "$REQUIRED_JOB_RESULTS"
+            exit 1
+          fi
