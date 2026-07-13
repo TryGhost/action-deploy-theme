@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-    This <a href="https://github.com/features/actions">GitHub action</a> allows you to automatically build and deploy your <a href="https://ghost.org/docs/api/handlebars-themes/">Ghost Theme</a> <br>from GitHub to any <a href="https://ghost.org">Ghost</a> install, via the Ghost Admin API!
+    This <a href="https://github.com/features/actions">GitHub Action</a> packages and deploys your <a href="https://docs.ghost.org/themes/">Ghost theme</a> <br>from GitHub to a <a href="https://ghost.org">Ghost</a> site through the Ghost Admin API.
 </p>
 
 <p align="center">
@@ -36,8 +36,6 @@
 &nbsp;
 
 ## Getting Started
-
-💡 This action expects that you already have a working Ghost install running at least v2.25.5.
 
 1. Generate a set of Ghost Admin API credentials, by configuring a new Custom Integration in Ghost Admin &rarr; Integrations.
 
@@ -56,7 +54,7 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7
             - name: Deploy Ghost Theme
               uses: TryGhost/action-deploy-theme@v2
               with:
@@ -64,21 +62,21 @@ jobs:
                   api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
 ```
 
-This will trigger a deployment for every commit to master. If you'd like to change the "on" event, see the [GitHub action documentation](https://help.github.com/en/github/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#on), which shows how to build on Pull Requests, Releases, Tags and more.
+This workflow deploys the theme after every push to `master` or `main`. To use a different trigger, see GitHub's [workflow trigger documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows).
 
 ## Configuration
 
-The `with` portion of the workflow **must** be configured before the action will work. Any `secrets` must be referenced using the bracket syntax and stored in the GitHub repositories `Settings/Secrets` menu. You can learn more about setting environment variables with GitHub actions [here](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsenv).
+The `with` section must provide the API URL and key. Store both values under the repository's **Settings &rarr; Secrets and variables &rarr; Actions**, then reference them with the `secrets` context as shown above. See GitHub's guide to [using secrets in GitHub Actions](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets).
 
-| Key                 | Value Information                                                                                                                                                                                       | Type      | Required |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------- |
-| `api-url`           | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations                                                                                  | `secrets` | **Yes**  |
-| `api-key`           | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations                                                                       | `secrets` | **Yes**  |
-| `version`           | The GhostJS version your blog is in. This will be [passed in the headers](https://docs.ghost.org/admin-api#accept-version-header) via `GhostAdminApi` package. Defaults to the latest version `v6.0`    | `string`  | No       |
-| `exclude`           | A list of files & folders to exclude from the generated zip file in addition to the [defaults](https://github.com/TryGhost/action-deploy-theme/tree/main/src/main.ts#L31), e.g. `"gulpfile.js *dist/*"` | `string`  | No       |
-| `theme-name`        | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"`                                                                              | `string`  | No       |
-| `file`              | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored                                                                                                       | `string`  | No       |
-| `working-directory` | A custom directory to zip when a theme is in a subdirectory, e.g. `packages/my-theme`                                                                                                                   | `string`  | No       |
+| Key                 | Value Information                                                                                                                                                                                                     | Type     | Required |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
+| `api-url`           | The base URL of your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations                                                                                                | `string` | **Yes**  |
+| `api-key`           | The authentication key for your Ghost Admin API, found by configuring a new Custom Integration in Ghost Admin &rarr; Integrations                                                                                     | `string` | **Yes**  |
+| `version`           | The [minimum Ghost Admin API version](https://docs.ghost.org/admin-api/#accept-version-header) the action expects the target site to support. Defaults to `v6.0`                                                      | `string` | No       |
+| `exclude`           | A space-separated list of files and folders to exclude from the generated zip file in addition to the [defaults](https://github.com/TryGhost/action-deploy-theme/blob/main/src/main.ts), e.g. `"gulpfile.js *dist/*"` | `string` | No       |
+| `theme-name`        | A custom theme name that overrides the default name in package.json. Useful if you use a fork of Casper, e.g. `"my-theme"`                                                                                            | `string` | No       |
+| `file`              | Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored                                                                                                                     | `string` | No       |
+| `working-directory` | A custom directory to zip when a theme is in a subdirectory, e.g. `packages/my-theme`                                                                                                                                 | `string` | No       |
 
 &nbsp;
 
@@ -89,6 +87,10 @@ The `with` portion of the workflow **must** be configured before the action will
 ---
 
 <p align="center">Don't forget to 🌟 Star 🌟 the repo if you like this GitHub Action!</p>
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development, validation, and release commands.
 
 # Copyright & License
 
