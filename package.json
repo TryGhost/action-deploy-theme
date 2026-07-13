@@ -10,7 +10,7 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/index.ts",
+    "build": "node scripts/build.mjs",
     "lint": "oxlint --quiet && oxfmt --check .",
     "lint:fix": "oxlint --fix && oxfmt .",
     "format": "oxfmt .",
