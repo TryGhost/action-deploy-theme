@@ -18,13 +18,13 @@ inputs:
     description: 'Files or folders to exclude (space-separated list)'
     required: false
   theme-name:
-    description: 'A custom theme name that overrides the default name in package.json'
+    description: 'A filename-safe custom theme name that overrides the default name in package.json'
     required: false
   file:
-    description: 'Path to a built zip file. If this is included, the `exclude` and `theme-name` options are ignored'
+    description: 'Workspace-contained path to a built zip file, resolved from `working-directory`. If set, `exclude` and `theme-name` are ignored'
     required: false
   working-directory:
-    description: 'A custom directory to zip when a theme is in a subdirectory'
+    description: 'A workspace-contained directory to zip when a theme is in a subdirectory'
     required: false
 runs:
   using: 'node24'
