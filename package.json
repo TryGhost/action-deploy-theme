@@ -11,7 +11,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build src/index.ts",
-    "lint": "oxlint && oxfmt --check .",
+    "lint": "oxlint --quiet && oxfmt --check .",
     "lint:fix": "oxlint --fix && oxfmt .",
     "format": "oxfmt .",
     "test": "vitest run",
