@@ -49141,7 +49141,7 @@ function getIDToken(aud) {
  */
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/slug@12.0.0/node_modules/slug/slug.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/slug@12.0.1/node_modules/slug/slug.js
 /* global btoa */
 let base64
 
@@ -49253,7 +49253,7 @@ function slugify (string, opts) {
         char = localeMap[char]
       } else if (opts.charmap[char]) {
         char = opts.charmap[char].replace(opts.replacement, ' ')
-      } else if (char.includes(opts.replacement)) {
+      } else if (opts.replacement !== '' && char.includes(opts.replacement)) {
         // preserve the replacement character in case it is excluded by disallowedChars
         char = char.replace(opts.replacement, ' ')
       } else {
