@@ -21,8 +21,8 @@ importers:
         specifier: 1.14.11
         version: 1.14.11(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       '@vercel/ncc':
-        specifier: 0.44.1
-        version: 0.44.1
+        specifier: 0.45.0
+        version: 0.45.0
       slug:
         specifier: 12.0.1
         version: 12.0.1
@@ -586,8 +586,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@vercel/ncc@0.44.1':
-    resolution: {integrity: sha512-cUjIE5P2YY1n+Kt9rFIazMMpGoPn1Fic04rOmTkElMkiDP5oszGfERMpo2shVkFKDL7rVppdM2pqJKC59shQWQ==}
+  '@vercel/ncc@0.45.0':
+    resolution: {integrity: sha512-8zPi1yO2mHpoKTD+e+Bf0ZT3e+sWHSOyGapm9s7b5R0gxJi3CiFTqmeQiMEyu6ejrz2s09M8JkEoUaTWjBJPQQ==}
     hasBin: true
 
   '@vitest/coverage-v8@4.1.10':
@@ -1438,7 +1438,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@vercel/ncc@0.44.1': {}
+  '@vercel/ncc@0.45.0': {}
 
   '@vitest/coverage-v8@4.1.10(vitest@4.1.10)':
     dependencies:

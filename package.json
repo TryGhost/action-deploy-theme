@@ -24,7 +24,7 @@
     "@actions/core": "3.0.1",
     "@actions/exec": "3.0.0",
     "@tryghost/admin-api": "1.14.11",
-    "@vercel/ncc": "0.44.1",
+    "@vercel/ncc": "0.45.0",
     "slug": "12.0.1"
   },
   "devDependencies": {
