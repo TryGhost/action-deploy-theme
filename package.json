@@ -28,7 +28,7 @@
     "slug": "12.0.1"
   },
   "devDependencies": {
-    "@tryghost/pro-ship": "1.1.7",
+    "@tryghost/pro-ship": "1.1.8",
     "@types/node": "25.9.5",
     "@types/slug": "5.0.9",
     "@vitest/coverage-v8": "4.1.11",
