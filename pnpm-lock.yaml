@@ -176,8 +176,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@tryghost/admin-api':
-        specifier: 1.14.12
-        version: 1.14.12(debug@4.4.3)
+        specifier: 1.14.13
+        version: 1.14.13(debug@4.4.3)
       '@vercel/ncc':
         specifier: 0.45.0
         version: 0.45.0
@@ -601,8 +601,8 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@tryghost/admin-api@1.14.12':
-    resolution: {integrity: sha512-sIq5laVcnkz+xeionkmOusA00k1n5jVGe/kBIOQ/zxouNDwgR+EbM0oGOuRgqa8Fw7CimhqiFQ+aSAKShyl2wg==}
+  '@tryghost/admin-api@1.14.13':
+    resolution: {integrity: sha512-V5ouJQEDxZVtvRRSvwT+wKMupMK27oH031eDQBeGX06e4xmTtVkNUwwBRdM4eKHv0khaA5bwwR4mM1vcbvQ68Q==}
 
   '@tryghost/pro-ship@1.1.9':
     resolution: {integrity: sha512-2DvlpT5P7v8bOizXTtL7/Flmc9wAK3eycroxgMTQWlpFaVlXjmOnuOnFGEeT8JGAdY/F5kk9tLDmb+x43TXbJQ==}
@@ -1467,7 +1467,7 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@tryghost/admin-api@1.14.12(debug@4.4.3)':
+  '@tryghost/admin-api@1.14.13(debug@4.4.3)':
     dependencies:
       axios: 1.20.0(debug@4.4.3)
       form-data: 4.0.6
