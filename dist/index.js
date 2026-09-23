@@ -1,24 +1,24 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 363:
+/***/ 6530:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __nccwpck_require__(429);
+module.exports = __nccwpck_require__(8768);
 
 
 /***/ }),
 
-/***/ 429:
+/***/ 8768:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /* eslint-disable no-restricted-syntax */
 const axios = __nccwpck_require__(4178);
 const FormData = __nccwpck_require__(7928);
 const fs = __nccwpck_require__(9896);
-const token = __nccwpck_require__(630);
+const token = __nccwpck_require__(4803);
 
-const packageInfo = __nccwpck_require__(1634);
+const packageInfo = __nccwpck_require__(2999);
 const packageVersion = packageInfo.version;
 
 // NOTE: bump this default when major versions are released
@@ -435,6 +435,10 @@ module.exports = function GhostAdminAPI(options) {
     }
 
     function makeApiRequest({endpoint, method, body, queryParams = {}, headers = {}}) {
+        if (method === 'GET') {
+            body = undefined;
+        }
+
         const {url: apiUrl, key, version, makeRequest} = config;
         const url = `${apiUrl}${endpoint}`;
 
@@ -501,7 +505,7 @@ module.exports = function GhostAdminAPI(options) {
 
 /***/ }),
 
-/***/ 630:
+/***/ 4803:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const jwt = __nccwpck_require__(3597);
@@ -47013,11 +47017,11 @@ module.exports = axios;
 
 /***/ }),
 
-/***/ 1634:
+/***/ 2999:
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"name":"@tryghost/admin-api","version":"1.14.12","repository":{"type":"git","url":"git+https://github.com/TryGhost/SDK.git","directory":"packages/admin-api"},"author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \\"Implement me!\\"","test":"NODE_ENV=testing c8 --reporter text --reporter cobertura mocha \'./test/**/*.test.js\'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"12.0.0","mocha":"12.0.0","should":"13.2.3","sinon":"22.1.0"},"dependencies":{"axios":"1.20.0","form-data":"4.0.6","jsonwebtoken":"9.0.3"},"gitHead":"660bda9609a563bc9e6aab299d3604bcfe2b59a7"}');
+module.exports = /*#__PURE__*/JSON.parse('{"name":"@tryghost/admin-api","version":"1.14.13","repository":{"type":"git","url":"git+https://github.com/TryGhost/SDK.git","directory":"packages/admin-api"},"author":"Ghost Foundation","license":"MIT","main":"index.js","files":["LICENSE","README.md","cjs/","lib/","index.js"],"scripts":{"dev":"echo \\"Implement me!\\"","test":"NODE_ENV=testing c8 --reporter text --reporter cobertura mocha \'./test/**/*.test.js\'","lint":"eslint . --ext .js --cache","posttest":"yarn lint"},"publishConfig":{"access":"public"},"devDependencies":{"c8":"12.0.0","mocha":"12.0.2","should":"13.2.3","sinon":"22.1.0"},"dependencies":{"axios":"1.20.0","form-data":"4.0.6","jsonwebtoken":"9.0.3"},"gitHead":"ef821dd12350809dff695488161e04353a893af1"}');
 
 /***/ }),
 
@@ -50886,8 +50890,8 @@ slug.setLocale = function (locale) {
 
 /* harmony default export */ const slug_slug = (slug);
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/@tryghost+admin-api@1.14.12_debug@4.4.3/node_modules/@tryghost/admin-api/index.js
-var admin_api = __nccwpck_require__(363);
+// EXTERNAL MODULE: ./node_modules/.pnpm/@tryghost+admin-api@1.14.13_debug@4.4.3/node_modules/@tryghost/admin-api/index.js
+var admin_api = __nccwpck_require__(6530);
 var admin_api_default = /*#__PURE__*/__nccwpck_require__.n(admin_api);
 ;// CONCATENATED MODULE: ./.build/main.js
 
