@@ -31,11 +31,11 @@
     "@tryghost/pro-ship": "1.1.9",
     "@types/node": "25.9.9",
     "@types/slug": "5.0.9",
-    "@vitest/coverage-v8": "5.0.4",
+    "@vitest/coverage-v8": "5.0.5",
     "oxfmt": "0.73.0",
     "oxlint": "1.88.0",
     "typescript": "7.0.2",
-    "vitest": "5.0.4"
+    "vitest": "5.0.5"
   },
   "packageManager": "pnpm@12.14.0"
 }
