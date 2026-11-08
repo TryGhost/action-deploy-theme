@@ -33,7 +33,7 @@
     "@types/slug": "5.0.9",
     "@vitest/coverage-v8": "5.1.0",
     "oxfmt": "0.76.0",
-    "oxlint": "1.90.0",
+    "oxlint": "1.91.0",
     "typescript": "7.0.2",
     "vitest": "5.1.0"
   },
