@@ -11,8 +11,7 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: sync-dist-main
@@ -22,6 +21,8 @@ jobs:
     name: Rebuild dist
     runs-on: ubuntu-26.04
     timeout-minutes: 15
+    permissions:
+      contents: read
     outputs:
       base-sha: ${{ steps.rebuild.outputs.base-sha }}
       changed: ${{ steps.rebuild.outputs.changed }}
@@ -70,6 +71,8 @@ jobs:
     if: needs.rebuild-dist.outputs.changed == 'true'
     runs-on: ubuntu-26.04
     timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
