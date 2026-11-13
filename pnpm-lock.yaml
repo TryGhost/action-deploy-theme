@@ -176,8 +176,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@tryghost/admin-api':
-        specifier: 1.14.14
-        version: 1.14.14(debug@4.4.3)
+        specifier: 1.14.16
+        version: 1.14.16(debug@4.4.3)
       '@vercel/ncc':
         specifier: 0.45.0
         version: 0.45.0
@@ -186,8 +186,8 @@ importers:
         version: 12.0.1
     devDependencies:
       '@tryghost/pro-ship':
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.4
+        version: 2.0.4
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -601,16 +601,16 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@tryghost/admin-api@1.14.14':
-    resolution: {integrity: sha512-w1kWh9MCd3ghOIyHkm5yKT6y+c7r/sO/qRTd5Ghpudyc7OnHnRu2xCN7SQwr7R2+Rrt31ix4CJCgsxmuLvx7Vg==}
+  '@tryghost/admin-api@1.14.16':
+    resolution: {integrity: sha512-VUZDJgVEquXrKm3SpXKACUq9DqsOUNN7aZG9F4G6k/2D9bNI8/KSZGaVUXxXMEFbLh4PfeamxgLJ6ozvVyyfPQ==}
 
-  '@tryghost/pro-ship@2.0.1':
-    resolution: {integrity: sha512-zlDkQHU0VWzwaZmRATjioFlDPyeZF6f1gpA5oAeT+72AZc8k2PI7SeWELLosVm2dj7Qm2TFPr2MowfyYB8Uydg==}
+  '@tryghost/pro-ship@2.0.4':
+    resolution: {integrity: sha512-tt6vcmI1m9ZyjhQ23FHDgQ6TmVzLqIWlw7PQ9nmOdce4iaW3RcxXZVIFnj90PvpmZdxX2j5Xl9KoMBOkqXwTxg==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
-  '@tryghost/root-utils@2.3.19':
-    resolution: {integrity: sha512-PIFzf2FUBiDe9H7UZ5om1yX/LgIpl7L96dtcgxahGqEhss5/OLVePaPTAray+VV3Nx7o/VM5HTOVPvuGai3mSw==}
+  '@tryghost/root-utils@2.3.21':
+    resolution: {integrity: sha512-U6NCurcith8tYnU3DQZWGaJstl4zt2wU7A9RlAx/kuxZdqoeoqrT91MacVKwdURiTH/JgIxeHEsQAxzNZC+TfQ==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -796,8 +796,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.20.0:
-    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
+  axios@1.21.1:
+    resolution: {integrity: sha512-6eI5Q/Y4u/Um9dDlsRoq5pY2rxnUTv+L4PpLitnbk/i4jb3MxLZ5CsN5Ih3IysbeRYK4pR+P7qfMsOQl9fwwFQ==}
 
   buffer-equal-constant-time@1.0.1:
     resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
@@ -1464,21 +1464,21 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@tryghost/admin-api@1.14.14(debug@4.4.3)':
+  '@tryghost/admin-api@1.14.16(debug@4.4.3)':
     dependencies:
-      axios: 1.20.0(debug@4.4.3)
+      axios: 1.21.1(debug@4.4.3)
       form-data: 4.0.6
       jsonwebtoken: 9.0.3
     transitivePeerDependencies:
       - debug
       - supports-color
 
-  '@tryghost/pro-ship@2.0.1':
+  '@tryghost/pro-ship@2.0.4':
     dependencies:
-      '@tryghost/root-utils': 2.3.19
+      '@tryghost/root-utils': 2.3.21
       semver: 7.8.6
 
-  '@tryghost/root-utils@2.3.19':
+  '@tryghost/root-utils@2.3.21':
     dependencies:
       caller: 1.1.0
       find-root: 1.1.0
@@ -1605,7 +1605,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.20.0(debug@4.4.3):
+  axios@1.21.1(debug@4.4.3):
     dependencies:
       follow-redirects: 1.16.2(debug@4.4.3)
       form-data: 4.0.6
