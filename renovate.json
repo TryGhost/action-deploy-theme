@@ -1,4 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>TryGhost/renovate-config"]
+  "extends": ["local>TryGhost/renovate-config"],
+  "packageRules": [
+    {
+      "description": "Node must match the Actions runtime in action.yml (runs.using: node24)",
+      "matchDepNames": ["node"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ]
 }
